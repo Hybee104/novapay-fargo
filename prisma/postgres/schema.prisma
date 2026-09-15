@@ -1,0 +1,234 @@
+// NovaPAY Bank — production database schema (PostgreSQL).
+// This mirrors the SQLite dev schema (prisma/schema.prisma) but targets
+// PostgreSQL for deployment. Do not edit models here without also updating
+// the SQLite schema, and vice versa.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                           String   @id @default(cuid())
+  firstName                    String
+  lastName                     String
+  email                        String   @unique
+  passwordHash                 String
+  phone                        String?
+  twoFactorEnabled             Boolean  @default(false)
+  securityNotificationsEnabled Boolean  @default(true)
+  biometricEnabled             Boolean  @default(false)
+  transactionAlertsEnabled     Boolean  @default(true)
+  createdAt                    DateTime @default(now())
+  updatedAt                    DateTime @updatedAt
+
+  accounts          Account[]
+  transactions      Transaction[]
+  balanceHistory    BalanceHistory[]
+  notifications     Notification[]
+  conversations     SupportConversation[]
+  messages          SupportMessage[]
+  tickets           SupportTicket[]
+  loginActivity     LoginActivity[]
+  internalTransfers InternalTransfer[]
+  payments          Payment[]
+
+  @@map("User")
+}
+
+model Account {
+  id            String   @id @default(cuid())
+  userId        String
+  bank          String   @default("NOVAPAY")
+  type          String   @default("Premium Dollar Checking")
+  currency      String   @default("USD")
+  accountNumber String   @unique
+  routingNumber String
+  status        String   @default("Active — Demo")
+  balance       Decimal  @default(650000)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user                User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  outgoingTransfers   InternalTransfer[]  @relation("TransferSourceAccount")
+  incomingTransfers   InternalTransfer[]  @relation("TransferDestinationAccount")
+  payments            Payment[]
+
+  @@index([userId, bank])
+  @@map("Account")
+}
+
+model Transaction {
+  id                   String   @id @default(cuid())
+  userId               String
+  bank                 String   @default("NOVAPAY")
+  transactionReference String   @unique
+  type                 String
+  amount               Decimal
+  currency             String   @default("USD")
+  recipientName        String
+  recipientReference   String?
+  recipientEmail       String?
+  description          String?
+  category             String?
+  status               String
+  runningBalance       Decimal?
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  user                   User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  payment                Payment?
+  asSourceTransfer       InternalTransfer?  @relation("TransferSourceTxn")
+  asDestinationTransfer  InternalTransfer?  @relation("TransferDestinationTxn")
+
+  @@index([userId, bank, createdAt])
+  @@index([userId, bank, status])
+  @@map("Transaction")
+}
+
+model InternalTransfer {
+  id                        String   @id @default(cuid())
+  transferReference         String   @unique
+  userId                    String
+  sourceAccountId           String
+  destinationAccountId      String
+  sourceTransactionId       String   @unique
+  destinationTransactionId  String   @unique
+  amount                    Decimal
+  currency                  String   @default("USD")
+  description               String?
+  status                    String   @default("COMPLETED")
+  createdAt                 DateTime @default(now())
+  updatedAt                 DateTime @updatedAt
+
+  user                  User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sourceAccount         Account     @relation("TransferSourceAccount", fields: [sourceAccountId], references: [id], onDelete: Restrict)
+  destinationAccount    Account     @relation("TransferDestinationAccount", fields: [destinationAccountId], references: [id], onDelete: Restrict)
+  sourceTransaction     Transaction @relation("TransferSourceTxn", fields: [sourceTransactionId], references: [id], onDelete: Cascade)
+  destinationTransaction Transaction @relation("TransferDestinationTxn", fields: [destinationTransactionId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+  @@map("InternalTransfer")
+}
+
+model Payment {
+  id               String   @id @default(cuid())
+  paymentReference String   @unique
+  userId           String
+  accountId        String
+  transactionId    String   @unique
+  recipientName    String
+  description      String?
+  amount           Decimal
+  category         String
+  status           String   @default("PENDING")
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  account     Account     @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  transaction Transaction @relation(fields: [transactionId], references: [id], onDelete: Cascade)
+
+  @@index([userId, status])
+  @@index([accountId, createdAt])
+  @@map("Payment")
+}
+
+model BalanceHistory {
+  id      String   @id @default(cuid())
+  userId  String
+  bank    String   @default("NOVAPAY")
+  date    DateTime
+  balance Decimal
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, bank, date])
+  @@map("BalanceHistory")
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  bank      String   @default("NOVAPAY")
+  title     String
+  message   String
+  type      String   @default("system")
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, bank, read])
+  @@map("Notification")
+}
+
+model SupportConversation {
+  id        String   @id @default(cuid())
+  userId    String
+  bank      String   @default("NOVAPAY")
+  subject   String
+  agentName String   @default("Sarah — Northstar Support")
+  status    String   @default("OPEN")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  messages SupportMessage[]
+  user     User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, bank, updatedAt])
+  @@map("SupportConversation")
+}
+
+model SupportMessage {
+  id             String   @id @default(cuid())
+  conversationId String
+  userId         String?
+  senderRole     String
+  senderName     String
+  body           String
+  createdAt      DateTime @default(now())
+
+  conversation SupportConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  user         User?               @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([conversationId, createdAt])
+  @@map("SupportMessage")
+}
+
+model SupportTicket {
+  id              String   @id @default(cuid())
+  ticketReference String   @unique
+  userId          String
+  bank            String   @default("NOVAPAY")
+  subject         String
+  category        String
+  description     String
+  priority        String
+  status          String   @default("Open")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, bank, createdAt])
+  @@map("SupportTicket")
+}
+
+model LoginActivity {
+  id        String   @id @default(cuid())
+  userId    String
+  event     String
+  ip        String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+  @@map("LoginActivity")
+}
