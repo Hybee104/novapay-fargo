@@ -13,8 +13,7 @@
     "db:generate": "prisma generate",
     "db:generate:prod": "node scripts/prepare-prisma.mjs",
     "db:reset": "prisma migrate reset",
-    "db:seed": "tsx prisma/seed.ts",
-    "postinstall": "node scripts/prepare-prisma.mjs"
+    "db:seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.13.0",
