@@ -61,7 +61,7 @@ export async function POST(req: Request) {
       transactions: {
         create: {
           bank: BANK_NOVAPAY,
-          transactionReference: `SIM-TXN-${new Date().getFullYear()}-WELCOME`,
+          transactionReference: `SIM-TXN-${new Date().getFullYear()}-WELCOME-${crypto.randomUUID()}`,
           type: "Deposit",
           amount: WELCOME_CREDIT,
           currency: "USD",
