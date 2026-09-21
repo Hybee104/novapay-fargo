@@ -77,7 +77,7 @@ export function FargoSecurityView() {
 
   return (
     <div className="space-y-6">
-      <PageHeader title="Security" description="Security preferences shared across your simulated account environment." />
+      <PageHeader title="Security" description="Security preferences for your account." />
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.2fr_1fr]">
         <Card>
@@ -86,7 +86,7 @@ export function FargoSecurityView() {
             <Toggle
               tone="fargo"
               label="Two-factor authentication"
-              description="Simulated 2FA. No real codes are sent."
+              description="Require a one-time code at sign-in for extra security."
               checked={prefs.twoFactorEnabled}
               onCheckedChange={(v) => togglePreference("twoFactorEnabled", v)}
               disabled={saving}
@@ -94,7 +94,7 @@ export function FargoSecurityView() {
             <Toggle
               tone="fargo"
               label="Biometric sign-in"
-              description="Simulated biometric unlock. Not connected to any device."
+              description="Allow biometric unlock on supported devices."
               checked={prefs.biometricEnabled}
               onCheckedChange={(v) => togglePreference("biometricEnabled", v)}
               disabled={saving}
@@ -102,7 +102,7 @@ export function FargoSecurityView() {
             <Toggle
               tone="fargo"
               label="Security notifications"
-              description="Receive simulated alerts for sign-in events."
+              description="Notify me about security events, such as sign-ins from new devices."
               checked={prefs.securityNotificationsEnabled}
               onCheckedChange={(v) => togglePreference("securityNotificationsEnabled", v)}
               disabled={saving}
@@ -110,7 +110,7 @@ export function FargoSecurityView() {
             <Toggle
               tone="fargo"
               label="Transaction alerts"
-              description="Receive simulated alerts for payments and transfers."
+              description="Send an alert every time a payment or transfer is created."
               checked={prefs.transactionAlertsEnabled}
               onCheckedChange={(v) => togglePreference("transactionAlertsEnabled", v)}
               disabled={saving}

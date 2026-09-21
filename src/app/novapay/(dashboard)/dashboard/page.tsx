@@ -3,7 +3,7 @@ import { DashboardView } from "@/components/dashboard/DashboardView";
 
 export const metadata: Metadata = {
   title: "Dashboard",
-  description: "Your NovaPAY Bank demo account overview.",
+  description: "Your NovaPAY Bank account overview.",
 };
 
 export default function DashboardPage() {

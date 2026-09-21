@@ -52,7 +52,7 @@ export function FargoTopbar({ onOpenMenu, userName }: FargoTopbarProps) {
 
       <div className="flex items-center gap-2 rounded-full border border-fargo-200 bg-fargo-50 px-3 py-1 text-fargo-700 dark:border-fargo-500/30 dark:bg-fargo-500/10 dark:text-fargo-400">
         <ShieldCheck className="size-3.5" aria-hidden="true" />
-        <span className="text-xs font-semibold">Simulated Session</span>
+        <span className="text-xs font-semibold">Active Session</span>
       </div>
 
       <div className="ml-auto flex items-center gap-1.5">

@@ -4,7 +4,7 @@ import { BalanceHistoryView } from "@/components/balance/BalanceHistoryView";
 
 export const metadata: Metadata = {
   title: "Balance History",
-  description: "Track your simulated balance over time.",
+  description: "Track your balance over time.",
 };
 
 export default function BalanceHistoryPage() {
@@ -12,7 +12,7 @@ export default function BalanceHistoryPage() {
     <div>
       <PageHeader
         title="Balance History"
-        description="A visual history of the simulated available balance of your demo account."
+        description="A visual history of the available balance of your account."
       />
       <BalanceHistoryView />
     </div>

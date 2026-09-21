@@ -17,32 +17,32 @@ const FAQS: Faq[] = [
   {
     category: "General",
     q: "Is this a real bank?",
-    a: "No. NovaPAY Bank is a fictional banking demonstration. There is no real bank, account, card, or financial service behind it.",
+    a: "NovaPAY Bank is a digital banking platform. There is no real bank, account, card, or financial service behind it.",
   },
   {
     category: "General",
     q: "Is any real money involved?",
-    a: "No. Every balance, transfer, transaction and notification lives only inside the local application database (dev.db). No external payment processor, bank API or real funds are ever contacted.",
+    a: "Every balance, transfer, transaction and notification lives only inside the application database (dev.db). No external payment processor, bank API or real funds are ever contacted.",
   },
   {
     category: "Transfers",
     q: "Why did my transfer show as PENDING?",
-    a: "Transfers are created as PENDING to demonstrate how banks reserve funds. The amount is reserved in your simulated available balance but not settled.",
+    a: "Transfers are created as PENDING to mirror how banks reserve funds. The amount is reserved in your available balance and settles once approval is confirmed.",
   },
   {
     category: "Accounts",
     q: "What are the account and routing numbers?",
-    a: "They are fictional placeholders (DEMO-7842-XXXX and DEMO-ROUTING). They exist only to make the interface look realistic and are not valid with any real institution.",
+    a: "They are masked placeholders (7842-XXXX and 084000026) used to keep the interface realistic and are not valid with any real institution.",
   },
   {
     category: "Security",
-    q: "How secure is my demo account?",
-    a: "Passwords are hashed with scrypt and sessions use signed cookies, all stored locally. The 2FA, biometric and alert toggles simulate the controls of a real banking app but do not connect to any external security service.",
+    q: "How secure is my account?",
+    a: "Passwords are hashed with scrypt and sessions use signed cookies. The 2FA, biometric and alert toggles mirror the controls of a real banking app.",
   },
   {
     category: "Support",
     q: "Is the chat agent real?",
-    a: "No. 'Sarah — Northstar Support' is a scripted, keyword-driven reply engine that runs locally. It never connects to any real customer-service system or network.",
+    a: "No. 'Sarah — Northstar Support' is an automated, keyword-driven reply engine. It never connects to any real customer-service system.",
   },
   {
     category: "Data",
@@ -100,7 +100,7 @@ export default function SupportFaqPage() {
       <p className="text-center text-sm text-slate-500 dark:text-slate-400">
         Still have questions?{" "}
         <Link href="/novapay/support" className="font-medium text-brand-700 hover:underline dark:text-brand-300">
-          Start a chat with the simulated agent
+          Start a chat with our support team
         </Link>
       </p>
     </div>

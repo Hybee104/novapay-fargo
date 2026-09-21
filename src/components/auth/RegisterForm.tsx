@@ -70,9 +70,9 @@ export function RegisterForm() {
   return (
     <div className="w-full max-w-md">
       <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8 dark:border-slate-800 dark:bg-slate-900">
-        <h1 className="text-xl font-bold text-slate-900 dark:text-slate-100">Create a demo account</h1>
+        <h1 className="text-xl font-bold text-slate-900 dark:text-slate-100">Create an account</h1>
         <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-          Registration only creates a local simulated identity — no real verification.
+          Join NovaPAY Bank in less than a minute.
         </p>
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-4" noValidate>
@@ -133,7 +133,7 @@ export function RegisterForm() {
           )}
 
           <Button type="submit" fullWidth size="lg" loading={loading}>
-            {loading ? "Creating account…" : "Create demo account"}
+            {loading ? "Creating account…" : "Create account"}
           </Button>
         </form>
       </div>

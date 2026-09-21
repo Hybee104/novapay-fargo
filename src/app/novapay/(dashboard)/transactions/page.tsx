@@ -4,7 +4,7 @@ import { TransactionsView } from "@/components/transactions/TransactionsView";
 
 export const metadata: Metadata = {
   title: "Transactions",
-  description: "Browse your simulated transaction history.",
+  description: "Browse your transaction history.",
 };
 
 export default function TransactionsPage() {
@@ -12,7 +12,7 @@ export default function TransactionsPage() {
     <div>
       <PageHeader
         title="Transactions"
-        description="A complete ledger of simulated deposits, transfers, payments and refunds."
+        description="A complete ledger of deposits, transfers, payments and refunds."
       />
       <TransactionsView />
     </div>

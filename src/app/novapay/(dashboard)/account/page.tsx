@@ -4,7 +4,7 @@ import { AccountView } from "@/components/account/AccountView";
 
 export const metadata: Metadata = {
   title: "Account",
-  description: "View and edit your demo account details.",
+  description: "View and edit your account details.",
 };
 
 export default function AccountPage() {
@@ -12,7 +12,7 @@ export default function AccountPage() {
     <div>
       <PageHeader
         title="Account"
-        description="Your demo profile and simulated account details."
+        description="Your profile and account details."
       />
       <AccountView />
     </div>

@@ -4,7 +4,7 @@ import { SupportHub } from "@/components/support/SupportHub";
 
 export const metadata: Metadata = {
   title: "Support",
-  description: "Chat with the simulated support agent or open a demo ticket.",
+  description: "Chat with a support specialist or open a ticket.",
 };
 
 export default function SupportPage() {
@@ -12,7 +12,7 @@ export default function SupportPage() {
     <div>
       <PageHeader
         title="Support Center"
-        description="Talk to the simulated agent, open a ticket, or browse the FAQ."
+        description="Talk to a support specialist, open a ticket, or browse the FAQ."
       />
       <SupportHub />
     </div>

@@ -3,7 +3,7 @@ import { FargoTransactionDetailView } from "@/components/fargo/FargoTransactionD
 
 export const metadata: Metadata = {
   title: "Transaction Details",
-  description: "A single simulated Fargo ledger entry.",
+  description: "A single Fargo ledger entry.",
 };
 
 export const dynamic = "force-dynamic";

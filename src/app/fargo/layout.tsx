@@ -4,7 +4,7 @@ import { FargoShell } from "@/components/fargo/FargoShell";
 
 export const metadata: Metadata = {
   title: "Fargo",
-  description: "Your Fargo simulated digital checking account.",
+  description: "Your Fargo digital checking account.",
 };
 
 export const dynamic = "force-dynamic";

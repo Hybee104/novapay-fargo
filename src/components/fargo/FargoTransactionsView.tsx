@@ -90,7 +90,7 @@ export function FargoTransactionsView() {
 
   return (
     <div className="space-y-6">
-      <PageHeader title="Transactions" description="Every simulated entry in your Fargo ledger." />
+      <PageHeader title="Transactions" description="Every entry in your Fargo ledger." />
 
       <Card>
         <CardContent className="space-y-4 p-5">

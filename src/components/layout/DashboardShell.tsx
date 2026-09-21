@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { Topbar } from "@/components/layout/Topbar";
-import { SimulationNotice } from "@/components/layout/SimulationNotice";
 
 interface DashboardShellProps {
   children: React.ReactNode;
@@ -46,7 +45,9 @@ export function DashboardShell({ children, userName, userEmail }: DashboardShell
 
         <footer className="border-t border-slate-200 dark:border-slate-800">
           <div className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-            <SimulationNotice />
+            <p className="text-center text-xs text-slate-400 dark:text-slate-500">
+              © 2026 NovaPAY Bank. All rights reserved.
+            </p>
           </div>
         </footer>
       </div>

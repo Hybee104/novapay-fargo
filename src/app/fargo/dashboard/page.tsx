@@ -3,7 +3,7 @@ import { FargoDashboardView } from "@/components/fargo/FargoDashboardView";
 
 export const metadata: Metadata = {
   title: "Dashboard",
-  description: "Your Fargo simulated account overview.",
+  description: "Your Fargo account overview.",
 };
 
 export default function FargoDashboardPage() {

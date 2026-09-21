@@ -21,14 +21,14 @@ export async function POST(req: Request) {
   const existing = await prisma.user.findUnique({ where: { email: result.value.email } });
   if (existing) {
     return NextResponse.json(
-      { error: "An account with this email already exists in the demo.", errors: { email: "Email is already registered." } },
+      { error: "An account with this email already exists.", errors: { email: "Email is already registered." } },
       { status: 409 },
     );
   }
 
   const passwordHash = await hashPassword(result.value.password);
-  const novaAccountNumber = `DEMO-${Math.floor(1000 + Math.random() * 9000)}-XXXX`;
-  const fargoAccountNumber = `FARG-${Math.floor(1000 + Math.random() * 9000)}-XXXX`;
+  const novaAccountNumber = `${Math.floor(1000 + Math.random() * 9000)}-XXXX`;
+  const fargoAccountNumber = `${Math.floor(1000 + Math.random() * 9000)}-XXXX`;
 
   const user = await prisma.user.create({
     data: {
@@ -65,7 +65,7 @@ export async function POST(req: Request) {
           type: "Deposit",
           amount: WELCOME_CREDIT,
           currency: "USD",
-          recipientName: "NovaPAY Demo",
+          recipientName: "NovaPAY Bank",
           recipientReference: novaAccountNumber,
           description: "Opening welcome credit",
           category: "Welcome",
@@ -91,7 +91,7 @@ export async function POST(req: Request) {
             bank: BANK_FARGO,
             title: "Welcome to Fargo",
             message:
-              "Your Simulated Digital Checking Account is ready with a $0.00 opening balance. Transfer funds in from NovaPAY to get started.",
+              "Your Digital Checking Account is ready with a $0.00 opening balance. Transfer funds in from NovaPAY to get started.",
             type: "system",
           },
         ],

@@ -128,9 +128,9 @@ export function validateTransfer(body: unknown): ValidationResult<TransferInput>
 
   if (amount === null) errors.amount = "Enter a valid USD amount.";
   else if (amount <= 0) errors.amount = "Amount must be greater than zero.";
-  else if (amount > 10000000) errors.amount = "Amount exceeds the simulated transfer limit ($10,000,000.00).";
+  else if (amount > 10000000) errors.amount = "Amount exceeds the transfer limit ($10,000,000.00).";
 
-  if (currency !== "USD") errors.currency = "Only USD is supported in this simulation.";
+  if (currency !== "USD") errors.currency = "Only USD is supported.";
 
   if (purpose && !PURPOSE_OPTIONS.includes(purpose)) errors.purpose = "Select a valid transfer purpose.";
 

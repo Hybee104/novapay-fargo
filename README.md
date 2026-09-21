@@ -157,7 +157,10 @@ npm run build
 This automatically:
 - Detects PostgreSQL from `DATABASE_URL`
 - Generates the correct Prisma client
+- Applies any pending PostgreSQL migrations (`prisma migrate deploy`) — idempotent, safe on every redeploy
 - Runs `next build`
+
+For SQLite development (`DATABASE_URL="file:./dev.db"`) the migration step is skipped automatically.
 
 ### 5. Configure the Install Command
 
@@ -165,13 +168,13 @@ Vercel runs `npm install` by default, which triggers `postinstall` and generates
 
 ### 6. Run the PostgreSQL Migration
 
-After deployment, connect to your database and run:
+Migrations are applied **automatically on every production build** (see step 4) the first time and on each redeploy — `prisma migrate deploy` only applies *pending* migrations, so existing data is never touched.
+
+To apply them manually without redeploying, run from your local machine (no secrets are stored in the repo; supply the connection string as an environment variable):
 
 ```bash
-npx prisma migrate deploy --schema=prisma/postgres/schema.prisma
+DATABASE_URL="postgresql://..." npm run db:migrate:prod
 ```
-
-Or use a Vercel Postgres-compatible migration process via a build step or one-off run command.
 
 ### 7. Seed the Production Database
 

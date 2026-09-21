@@ -3,7 +3,7 @@ import { NovaTransferToFargoView } from "@/components/transfers/NovaTransferToFa
 
 export const metadata: Metadata = {
   title: "Transfer to Fargo",
-  description: "Move simulated funds from NovaPAY into Fargo.",
+  description: "Move funds from NovaPAY into Fargo.",
 };
 
 export default function TransferToFargoPage() {

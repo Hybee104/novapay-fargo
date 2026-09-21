@@ -25,7 +25,7 @@ export function SpendingChart({ data }: { data: MonthPoint[] }) {
     <Card className="h-full">
       <div className="px-5 pt-5">
         <h2 className="text-base font-semibold text-slate-900 dark:text-slate-100">Monthly Activity</h2>
-        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Simulated spending vs credits</p>
+        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Spending vs credits</p>
       </div>
       <div className="h-56 px-3 pb-4 pt-2">
         <ResponsiveContainer width="100%" height="100%">
@@ -42,7 +42,7 @@ export function SpendingChart({ data }: { data: MonthPoint[] }) {
             <Tooltip
               formatter={(value, name) => [
                 formatCurrency(Number(value)),
-                name === "spending" ? "Simulated spending" : "Simulated credits",
+                name === "spending" ? "Spending" : "Credits",
               ]}
               contentStyle={{ borderRadius: 12, border: "1px solid var(--color-slate-200)", fontSize: 13 }}
             />

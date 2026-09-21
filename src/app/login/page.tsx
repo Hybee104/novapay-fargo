@@ -8,7 +8,7 @@ import { BANK_TAGLINE } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Sign in — NovaPAY Bank",
-  description: "Sign in to the NovaPAY Bank demo banking platform.",
+  description: "Sign in to your NovaPAY Bank account.",
 };
 
 export default async function LoginPage() {
@@ -27,7 +27,7 @@ export default async function LoginPage() {
         <LoginForm />
       </div>
       <p className="mt-10 text-center text-xs text-slate-400 dark:text-slate-500">
-        NovaPAY Bank — Simulated Account. A fictional banking demonstration, not a real bank. No real money is sent or received.
+        © 2026 NovaPAY Bank. All rights reserved.
       </p>
     </main>
   );

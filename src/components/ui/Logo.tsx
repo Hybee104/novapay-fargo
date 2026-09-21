@@ -21,7 +21,7 @@ export function Logo({ compact = false, dark = false, className }: LogoProps) {
             <span className="ml-1 font-normal text-brand-600">Bank</span>
           </p>
           <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">
-            Demo Banking
+            Online Banking
           </p>
         </div>
       )}

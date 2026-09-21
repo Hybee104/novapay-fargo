@@ -3,7 +3,7 @@ import { FargoAccountView } from "@/components/fargo/FargoAccountView";
 
 export const metadata: Metadata = {
   title: "Account",
-  description: "Your Fargo simulated checking account details.",
+  description: "Your Fargo checking account details.",
 };
 
 export default function FargoAccountPage() {

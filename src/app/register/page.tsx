@@ -7,8 +7,8 @@ import { RegisterForm } from "@/components/auth/RegisterForm";
 import { BANK_TAGLINE } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Create a demo account — NovaPAY Bank",
-  description: "Register for the NovaPAY Bank simulation.",
+  title: "Create an account — NovaPAY Bank",
+  description: "Create a NovaPAY Bank account to get started.",
 };
 
 export default async function RegisterPage() {
@@ -27,7 +27,7 @@ export default async function RegisterPage() {
         <RegisterForm />
       </div>
       <p className="mt-10 text-center text-xs text-slate-400 dark:text-slate-500">
-        NovaPAY Bank — Simulated Account. Registration creates a local simulated identity only.
+        © 2026 NovaPAY Bank. All rights reserved.
       </p>
     </main>
   );

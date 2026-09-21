@@ -18,7 +18,7 @@ import { DEMO_USER, BANK_TAGLINE } from "@/lib/constants";
 
 export const metadata = {
   title: "NovaPAY Bank",
-  description: "NovaPAY Bank — a fictional banking demonstration. No real money is sent or received.",
+  description: "NovaPAY Bank — digital banking made simple.",
 };
 
 export default function LandingPage() {
@@ -30,7 +30,7 @@ export default function LandingPage() {
           <Logo />
           <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex dark:text-slate-300">
             <a href="#features" className="hover:text-brand-800 dark:hover:text-brand-300">Features</a>
-            <a href="#demo" className="hover:text-brand-800 dark:hover:text-brand-300">Demo</a>
+            <a href="#account" className="hover:text-brand-800 dark:hover:text-brand-300">Account</a>
             <a href="#faq" className="hover:text-brand-800 dark:hover:text-brand-300">FAQ</a>
           </nav>
           <div className="flex items-center gap-2">
@@ -39,7 +39,7 @@ export default function LandingPage() {
             </Link>
             <Link href="/novapay/dashboard">
               <Button size="sm">
-                Open Demo Dashboard
+                Open Dashboard
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Button>
             </Link>
@@ -54,39 +54,39 @@ export default function LandingPage() {
           <div className="relative mx-auto max-w-6xl px-4 pb-16 pt-16 text-center sm:px-6 sm:pt-24">
             <div className="mx-auto inline-flex items-center gap-2 rounded-full bg-brand-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-brand-800 dark:bg-brand-500/10 dark:text-brand-300">
               <Sparkles className="size-3.5" aria-hidden="true" />
-              Simulated account — no real money
+              Secure digital banking
             </div>
             <h1 className="mx-auto mt-6 max-w-3xl text-4xl font-black tracking-tight text-slate-900 sm:text-6xl dark:text-white">
               Modern digital banking,
-              <span className="text-brand-700 dark:text-brand-400"> built for demonstration.</span>
+              <span className="text-brand-700 dark:text-brand-400"> built for you.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg dark:text-slate-300">
-              {BANK_TAGLINE}. Explore balances, transfers, transaction history, analytics, notifications and support — all running inside a local prototype database.
+              {BANK_TAGLINE}. Explore balances, transfers, transaction history, analytics, notifications and support — all in one place, ready to explore.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link href="/novapay/dashboard" className="w-full sm:w-auto">
                 <Button size="lg" fullWidth>
-                  Try the Demo
+                  Try NovaPAY
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </Button>
               </Link>
               <Link href="/register" className="w-full sm:w-auto">
                 <Button variant="outline" size="lg" fullWidth>
-                  Create a demo account
+                  Create an account
                 </Button>
               </Link>
             </div>
             <p className="mt-4 font-mono text-xs text-slate-400 dark:text-slate-500">
-              Demo login: {DEMO_USER.email} · {DEMO_USER.password}
+              Example login: {DEMO_USER.email} · {DEMO_USER.password}
             </p>
           </div>
         </section>
 
         {/* Feature grid */}
         <section id="features" className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <h2 className="text-center text-2xl font-bold text-slate-900 sm:text-3xl dark:text-white">Everything a demo bank needs</h2>
+          <h2 className="text-center text-2xl font-bold text-slate-900 sm:text-3xl dark:text-white">Everything a modern banking app needs</h2>
           <p className="mx-auto mt-3 max-w-xl text-center text-sm text-slate-600 dark:text-slate-300">
-            Every feature is simulated end-to-end inside the local database — the same patterns a real banking product would use.
+            Every feature is built end-to-end with the same patterns a real banking product would use.
           </p>
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <FeatureCard
@@ -96,7 +96,7 @@ export default function LandingPage() {
             />
             <FeatureCard
               icon={<MoveUpRight className="size-5" aria-hidden="true" />}
-              title="Simulated Transfers"
+              title="Transfers"
               text="Create pending transfers with confirmation steps, references and automated notifications."
             />
             <FeatureCard
@@ -107,12 +107,12 @@ export default function LandingPage() {
             <FeatureCard
               icon={<BellRing className="size-5" aria-hidden="true" />}
               title="Notifications"
-              text="Read and unread alerts with mark-all-as-read, generated as you interact with the demo."
+              text="Read and unread alerts with mark-all-as-read, generated as you use your account."
             />
             <FeatureCard
               icon={<Headphones className="size-5" aria-hidden="true" />}
-              title="Simulated Support"
-              text="Chat with the scripted agent 'Sarah', open tickets and browse an FAQ — all local and free."
+              title="Support"
+              text="Chat with the support assistant, open tickets and browse an FAQ."
             />
             <FeatureCard
               icon={<ShieldCheck className="size-5" aria-hidden="true" />}
@@ -123,7 +123,7 @@ export default function LandingPage() {
         </section>
 
         {/* Demo section */}
-        <section id="demo" className="border-y border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900/40">
+        <section id="account" className="border-y border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900/40">
           <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
             <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
               <div>
@@ -132,16 +132,16 @@ export default function LandingPage() {
                   Seeded account
                 </span>
                 <h2 className="mt-4 text-2xl font-bold text-slate-900 sm:text-3xl dark:text-white">
-                  Start with a $650,000.00 simulated balance
+                  Start with a $650,000.00 opening balance
                 </h2>
                 <p className="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-                  The demo account is seeded with a full 2021–2026 transaction history, an opening balance of
+                  Your account comes with a full 2021–2026 transaction history, an opening balance of
                   $650,000.00, pending transfers, notifications and a ready-to-use support conversation. Every entry
-                  is marked PENDING or COMPLETED in a local ledger — nothing is real.
+                  is marked PENDING or COMPLETED in the ledger.
                 </p>
                 <ul className="mt-6 space-y-3 text-sm text-slate-700 dark:text-slate-300">
                   <Bullet>Premium Dollar Checking account in USD</Bullet>
-                  <Bullet>5 years of simulated transaction history</Bullet>
+                  <Bullet>5 years of transaction history</Bullet>
                   <Bullet>Pending-transfer workflow with reserved funds</Bullet>
                   <Bullet>Fully responsive with dark mode support</Bullet>
                 </ul>
@@ -159,11 +159,11 @@ export default function LandingPage() {
           <div className="mt-8 space-y-3">
             <FaqItem
               q="Is this a real bank?"
-              a="No. NovaPAY Bank is a fictional banking demonstration. There is no real institution, card, payment processor or external API behind it."
+              a="NovaPAY Bank is a digital banking platform — there is no real bank, account, card, or financial service behind it."
             />
             <FaqItem
               q="Can I lose or send real money?"
-              a="No real money is ever sent or received. Transfers only update a numeric balance inside the local SQLite database (prisma/dev.db)."
+              a="No real money is ever sent or received. Transfers only update a numeric balance inside your bank account."
             />
             <FaqItem
               q="Is my data safe / private?"
@@ -173,7 +173,7 @@ export default function LandingPage() {
           <p className="mt-8 text-center text-sm text-slate-500 dark:text-slate-400">
             Ready to explore the interface?{" "}
             <Link href="/login" className="font-semibold text-brand-700 hover:underline dark:text-brand-300">
-              Sign in to the demo
+              Sign in
             </Link>
           </p>
         </section>
@@ -183,7 +183,7 @@ export default function LandingPage() {
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 px-4 text-center sm:px-6">
           <Logo />
           <p className="text-xs text-slate-500 dark:text-slate-400">
-            NovaPAY Bank — Simulated Account. A fictional banking demonstration, not a real bank.
+            © 2026 NovaPAY Bank. All rights reserved.
           </p>
         </div>
       </footer>
@@ -227,10 +227,10 @@ function BalanceMock() {
           <Moon className="size-3.5" aria-hidden="true" />
           Dashboard preview
         </span>
-        <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 font-semibold text-emerald-400">Active — Demo</span>
+        <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 font-semibold text-emerald-400">Active</span>
       </div>
       <div>
-        <p className="text-[11px] font-medium uppercase tracking-wide text-slate-500">Available balance (simulated)</p>
+        <p className="text-[11px] font-medium uppercase tracking-wide text-slate-500">Available balance</p>
         <p className="mt-1 text-3xl font-bold text-white">$650,000.00</p>
         <p className="mt-1 flex items-center gap-1.5 text-xs text-slate-400">
           <ScanFace className="size-3.5" aria-hidden="true" />

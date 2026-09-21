@@ -4,7 +4,7 @@ import { TransferForm } from "@/components/transfers/TransferForm";
 
 export const metadata: Metadata = {
   title: "Transfer",
-  description: "Create a simulated money transfer.",
+  description: "Create a money transfer.",
 };
 
 export default function TransferPage() {
@@ -12,7 +12,7 @@ export default function TransferPage() {
     <div>
       <PageHeader
         title="Send Money"
-        description="Create a simulated transfer to a fictional recipient."
+        description="Create a transfer to any recipient."
       />
       <TransferForm />
     </div>

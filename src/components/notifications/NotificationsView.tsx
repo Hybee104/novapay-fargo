@@ -94,7 +94,7 @@ export function NotificationsView() {
         ) : items.length === 0 ? (
           <EmptyState
             title="No notifications yet."
-            description="Simulated account notifications will appear here as you use the demo."
+            description="Account notifications will appear here as you use the app."
             action={
               <Link href="/novapay/dashboard">
                 <Button variant="outline">Go to Dashboard</Button>

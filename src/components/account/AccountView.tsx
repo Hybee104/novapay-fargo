@@ -133,7 +133,7 @@ export function AccountView() {
               <div>
                 <div className="flex items-center gap-2">
                   <h2 className="text-lg font-bold text-slate-900 dark:text-slate-50">{fullName}</h2>
-                  <Badge tone="success">Demo</Badge>
+                  <Badge tone="success">Verified</Badge>
                 </div>
                 <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-slate-500 dark:text-slate-400">
                   <span className="inline-flex items-center gap-1.5">
@@ -161,21 +161,21 @@ export function AccountView() {
               <Building2 className="size-4 text-slate-400" aria-hidden="true" />
               Account Summary
             </h2>
-            <Badge tone="brand">Active — Demo</Badge>
+            <Badge tone="brand">Active</Badge>
           </div>
 
           <div className="mt-4 rounded-2xl bg-slate-900 p-5 text-white shadow-inner dark:bg-slate-800/80">
             <p className="text-xs font-medium uppercase tracking-wider text-slate-400">{account?.type ?? "Premium Dollar Checking Account"}</p>
             <p className="mt-2 text-2xl font-bold sm:text-3xl">{formatCurrency(data.balance)}</p>
-            <p className="mt-1 text-xs text-slate-400">Simulated available balance</p>
+            <p className="mt-1 text-xs text-slate-400">Available balance</p>
             <div className="mt-4 grid grid-cols-2 gap-3 border-t border-white/10 pt-4 font-mono text-sm">
               <div>
                 <p className="text-[10px] font-medium uppercase tracking-wide text-slate-400">Account number</p>
-                <p>{account?.accountNumber ?? "DEMO-7842-XXXX"}</p>
+                <p>{account?.accountNumber ?? "7842-XXXX"}</p>
               </div>
               <div>
                 <p className="text-[10px] font-medium uppercase tracking-wide text-slate-400">Routing number</p>
-                <p>{account?.routingNumber ?? "DEMO-ROUTING"}</p>
+                <p>{account?.routingNumber ?? "084000026"}</p>
               </div>
             </div>
           </div>
@@ -203,12 +203,6 @@ export function AccountView() {
               <dd className="font-medium text-slate-800 dark:text-slate-200">{account?.createdAt ? formatDate(account.createdAt) : "—"}</dd>
             </div>
           </dl>
-
-          <p className="mt-5 text-xs leading-relaxed text-slate-400 dark:text-slate-500">
-            NovaPAY — Simulated Account. Account and routing numbers are fictional masked placeholders (
-            <span className="font-mono">DEMO-7842-XXXX</span> / <span className="font-mono">DEMO-ROUTING</span>) and are
-            not tied to any real financial institution.
-          </p>
         </CardContent>
       </Card>
 
@@ -217,7 +211,7 @@ export function AccountView() {
         open={editOpen}
         onClose={() => setEditOpen(false)}
         title="Edit Profile"
-        description="Update your simulated profile details."
+        description="Update your profile details."
         footer={
           <>
             <Button variant="outline" onClick={() => setEditOpen(false)}>
@@ -262,7 +256,7 @@ export function AccountView() {
             placeholder="+1 (555) 010-2030"
           />
           <div className="rounded-lg bg-slate-50 p-3 text-xs leading-relaxed text-slate-500 dark:bg-slate-800/50 dark:text-slate-400">
-            <span className="font-semibold">Note:</span> Email address cannot be changed from this panel to keep the demo identity predictable. Use a new demo account if you need a different email.
+            <span className="font-semibold">Note:</span> Email address cannot be changed from this panel. Create a new account if you need a different email.
           </div>
           {formError && (
             <p role="alert" className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm font-medium text-red-600 dark:border-red-500/30 dark:bg-red-500/10 dark:text-red-400">

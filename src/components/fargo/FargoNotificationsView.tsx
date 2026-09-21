@@ -63,7 +63,7 @@ export function FargoNotificationsView() {
     <div className="space-y-6">
       <PageHeader
         title="Notifications"
-        description="Simulated alerts and updates for your Fargo account."
+        description="Alerts and updates for your Fargo account."
         actions={
           unread > 0 ? (
             <Button variant="secondary" size="sm" onClick={markAllRead}>
@@ -85,7 +85,7 @@ export function FargoNotificationsView() {
       ) : rows.length === 0 ? (
         <EmptyState
           title="No notifications"
-          description="You'll see simulated Fargo alerts here when they happen."
+          description="You'll see Fargo alerts here when they happen."
         />
       ) : (
         <Card>

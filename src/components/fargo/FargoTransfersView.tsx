@@ -67,7 +67,7 @@ export function FargoTransfersView() {
     <div className="space-y-6">
       <PageHeader
         title="Transfers"
-        description="Internal transfers move funds in from your linked NovaPAY demo account."
+        description="Internal transfers move funds in from your linked NovaPAY account."
         actions={
           <Link href="/novapay/transfer-to-fargo">
             <Button variant="fargo">

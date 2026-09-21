@@ -3,7 +3,7 @@ import { FargoBalanceHistoryView } from "@/components/fargo/FargoBalanceHistoryV
 
 export const metadata: Metadata = {
   title: "Balance History",
-  description: "Simulated balance history for your Fargo account.",
+  description: "Balance history for your Fargo account.",
 };
 
 export default function FargoBalanceHistoryPage() {

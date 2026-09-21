@@ -43,20 +43,20 @@ export function BalanceHistoryView() {
 
       <Card>
         <div className="px-5 pt-5">
-          <h2 className="text-base font-semibold text-slate-900 dark:text-slate-100">Simulated Balance History</h2>
-          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Recent balance snapshots recorded throughout the simulation</p>
+          <h2 className="text-base font-semibold text-slate-900 dark:text-slate-100">Balance History</h2>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Recent balance snapshots</p>
         </div>
         <CardContent className="pt-2">
           {loading ? (
             <SkeletonTableRows rows={6} />
           ) : rows.length === 0 ? (
-            <EmptyState title="No balance snapshots yet." description="Balance snapshots are recorded when simulated transfers are created." />
+            <EmptyState title="No balance snapshots yet." description="Balance snapshots are recorded when transfers are created." />
           ) : (
             <Table>
               <TableHead>
                 <TableRow>
                   <TableHeaderCell>Date recorded</TableHeaderCell>
-                  <TableHeaderCell className="text-right">Simulated balance</TableHeaderCell>
+                  <TableHeaderCell className="text-right">Balance</TableHeaderCell>
                   <TableHeaderCell className="text-right">Change</TableHeaderCell>
                 </TableRow>
               </TableHead>

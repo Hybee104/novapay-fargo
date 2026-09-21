@@ -4,7 +4,7 @@ import { NotificationsView } from "@/components/notifications/NotificationsView"
 
 export const metadata: Metadata = {
   title: "Notifications",
-  description: "Simulated account notifications for your demo profile.",
+  description: "Account notifications for your profile.",
 };
 
 export default function NotificationsPage() {
@@ -12,7 +12,7 @@ export default function NotificationsPage() {
     <div>
       <PageHeader
         title="Notifications"
-        description="Simulated alerts about your demo account activity."
+        description="Alerts about your account activity."
       />
       <NotificationsView />
     </div>

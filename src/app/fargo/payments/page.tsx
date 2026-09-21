@@ -3,7 +3,7 @@ import { FargoPaymentsView } from "@/components/fargo/FargoPaymentsView";
 
 export const metadata: Metadata = {
   title: "Payments",
-  description: "Simulated Fargo payments.",
+  description: "Fargo payments.",
 };
 
 export default function FargoPaymentsPage() {

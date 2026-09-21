@@ -121,7 +121,7 @@ export function FargoPaymentsView() {
       ) : rows.length === 0 ? (
         <EmptyState
           title="No payments found"
-          description="Create a simulated payment to see it listed here."
+          description="Create a payment to see it listed here."
           action={
             <Link href="/fargo/payments/new">
               <Button variant="fargo">

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { FargoSidebar } from "@/components/fargo/FargoSidebar";
 import { FargoTopbar } from "@/components/fargo/FargoTopbar";
-import { FargoSimulationNotice } from "@/components/fargo/FargoSimulationNotice";
 
 interface FargoShellProps {
   children: React.ReactNode;
@@ -46,7 +45,9 @@ export function FargoShell({ children, userName, userEmail }: FargoShellProps) {
 
         <footer className="border-t border-slate-200 dark:border-slate-800">
           <div className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-            <FargoSimulationNotice />
+            <p className="text-center text-xs text-slate-400 dark:text-slate-500">
+              © 2026 Fargo. All rights reserved.
+            </p>
           </div>
         </footer>
       </div>

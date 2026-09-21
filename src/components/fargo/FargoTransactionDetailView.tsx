@@ -79,7 +79,7 @@ export function FargoTransactionDetailView({ id }: { id: string }) {
     <div className="space-y-6">
       <PageHeader
         title="Transaction Details"
-        description="Simulated Fargo ledger entry"
+        description="Fargo ledger entry"
         actions={
           <Link href="/fargo/transactions">
             <Button variant="secondary" size="sm">

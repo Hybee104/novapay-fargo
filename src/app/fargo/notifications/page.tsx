@@ -3,7 +3,7 @@ import { FargoNotificationsView } from "@/components/fargo/FargoNotificationsVie
 
 export const metadata: Metadata = {
   title: "Notifications",
-  description: "Simulated alerts for your Fargo account.",
+  description: "Alerts for your Fargo account.",
 };
 
 export default function FargoNotificationsPage() {

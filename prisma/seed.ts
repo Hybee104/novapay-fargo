@@ -635,7 +635,7 @@ async function main() {
     {
       title: "Welcome to Fargo",
       message:
-        "Your Simulated Digital Checking Account is ready with a $0.00 opening balance. Transfer funds in from NovaPAY to get started.",
+        "Your Digital Checking Account is ready with a $0.00 opening balance. Transfer funds in from NovaPAY to get started.",
       type: "system",
       read: false,
       bank: BANK_FARGO,
@@ -699,7 +699,7 @@ async function main() {
     {
       senderRole: "agent",
       senderName: "Sarah — Northstar Support",
-      body: "Hello Michael. The transfer you see is currently marked as PENDING. That means the amount is reserved within your available balance but has not been settled. This account runs on a simulated balance — no real funds are moved or received.",
+      body: "Hello Michael. The transfer you see is currently marked as PENDING. That means the amount is reserved within your available balance but has not yet been settled.",
       createdAt: new Date(2026, 8, 13, 15, 24),
     },
     {
@@ -736,7 +736,7 @@ async function main() {
     {
       senderRole: "agent",
       senderName: "Jordan — Fargo Support",
-      body: "Hi Michael. Yes, that's expected. Every Fargo payment is created with a PENDING status, meaning the amount is reserved from your available balance but not yet settled. This is a simulation — no real funds move.",
+      body: "Hi Michael. Yes, that's expected. Every Fargo payment is created with a PENDING status, meaning the amount is reserved from your available balance but not yet settled.",
       createdAt: new Date(2026, 8, 14, 11, 8),
     },
     {

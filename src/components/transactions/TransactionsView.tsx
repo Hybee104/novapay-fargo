@@ -219,8 +219,8 @@ export function TransactionsView({ initialStatus }: { initialStatus?: string }) 
         ) : !data || data.transactions.length === 0 ? (
           <div className="p-2">
             <EmptyState
-              title="No simulated transactions found."
-              description="Try adjusting your filters, or create a simulated transfer."
+              title="No transactions found."
+              description="Try adjusting your filters, or create a transfer."
               action={
                 <Link href="/novapay/transfer">
                   <Button variant="outline">Send Money</Button>
@@ -232,7 +232,7 @@ export function TransactionsView({ initialStatus }: { initialStatus?: string }) 
           <>
             <div className="px-5 pt-4 text-sm text-slate-500 dark:text-slate-400">
               Showing <span className="font-semibold text-slate-700 dark:text-slate-200">{(data.page - 1) * data.pageSize + 1}–{Math.min(data.page * data.pageSize, data.total)}</span> of{" "}
-              <span className="font-semibold text-slate-700 dark:text-slate-200">{data.total}</span> simulated transactions
+              <span className="font-semibold text-slate-700 dark:text-slate-200">{data.total}</span> transactions
             </div>
             {/* Desktop table */}
             <div className="hidden md:block">

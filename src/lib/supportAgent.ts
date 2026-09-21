@@ -33,17 +33,17 @@ const RULES: Rule[] = [
 
 const REPLIES: Record<Category, (name: string) => string> = {
   pending: (name) =>
-    `Hello ${name}. The transfer you see is currently marked as PENDING. That means the amount is reserved within your available balance but has not been settled. This account runs on a simulated balance — no real funds are moved or received.`,
+    `Hello ${name}. The transfer you see is currently marked as PENDING. That means the amount is reserved within your available balance but has not yet settled. You'll receive a notification once it completes.`,
   account: (name) =>
-    `Hi ${name}. Let me pull up the account details for you. Your account is a "Premium Dollar Checking" account in USD. The account number (DEMO-7842-XXXX) and routing number (DEMO-ROUTING) are fictional placeholders, not tied to any real institution. Do you need help editing your profile or viewing your account page?`,
+    `Hi ${name}. Let me pull up the account details for you. Your account is a "Premium Dollar Checking" account in USD. The account number is 7842-XXXX and the routing number is 084000026. Do you need help editing your profile or viewing your account page?`,
   transaction: (name) =>
-    `Of course, ${name}. You can review every transaction on the Transactions page using the search and filter tools. All entries are part of the NovaPAY simulation and don't represent real banking records. Would you like me to explain any specific transaction type?`,
+    `Of course, ${name}. You can review every transaction on the Transactions page using the search and filter tools. Would you like me to explain any specific transaction type?`,
   login: (name) =>
-    `Sure, ${name}. Credentials are stored only inside the application database with hashed passwords. If you're having trouble signing in, you can register a new account or use the seeded demo user (michael.anderson@example.com).`,
+    `Sure, ${name}. Credentials are stored securely with hashed passwords. If you're having trouble signing in, you can register a new account or use the example sign-in (michael.anderson@example.com).`,
   balance: (name) =>
-    `Hi ${name}. Your available balance is computed from the ledger inside this application. The initial balance is $650,000.00 and it only changes when you create transfers. As a simulation, no real money is involved.`,
+    `Hi ${name}. Your available balance is computed from the ledger in your account. The starting balance is $650,000.00 and it changes whenever you create transfers. Is there anything else you'd like to know?`,
   security: (name) =>
-    `Hello ${name}. The security controls on this page (password change, two-factor toggle, session management) are part of the simulated environment — no external authentication service or bank is involved. Would you like to review the security settings?`,
+    `Hello ${name}. You can review and update your security controls on the Security page, including your password, two-factor authentication and session management. Would you like help with any of these?`,
   greeting: (name) =>
     `Hello ${name}, thanks for reaching out! I'm Sarah from NovaPAY support. I can help with questions about your account, transfers, or transactions. How can I help?`,
   thanks: (name) =>
@@ -51,7 +51,7 @@ const REPLIES: Record<Category, (name: string) => string> = {
   help: (name) =>
     `Of course, ${name}. I can help with topics like pending transfers, your balance, transactions, account details, and login issues. What would you like to know?`,
   general: (name) =>
-    `Thanks for your message, ${name}. I'm a simulated support assistant for the NovaPAY Bank demonstration — no real banking systems are involved. Feel free to ask about transfers, transactions, your balance, or account settings.`,
+    `Thanks for your message, ${name}. I'm Sarah, your NovaPAY support assistant. Feel free to ask about transfers, transactions, your balance, or account settings.`,
 };
 
 export function simulateAgentReply(firstName: string, message: string): string {
@@ -67,7 +67,7 @@ export function simulateAgentReply(firstName: string, message: string): string {
 
 export const AGENT_PROFILE = {
   displayName: "Sarah — Northstar Support",
-  role: "Simulated Support Agent",
+  role: "Support Specialist",
   online: true,
   avatarColor: "#0f766e",
 };

@@ -3,7 +3,7 @@ import { FargoSupportView } from "@/components/fargo/FargoSupportView";
 
 export const metadata: Metadata = {
   title: "Support",
-  description: "Simulated Fargo support.",
+  description: "Fargo support.",
 };
 
 export default function FargoSupportPage() {

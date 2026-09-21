@@ -66,7 +66,7 @@ export function BalanceChart() {
       <div className="flex flex-wrap items-center justify-between gap-3 px-5 pt-5">
         <div>
           <h2 className="text-base font-semibold text-slate-900 dark:text-slate-100">Available Balance</h2>
-          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Simulated balance history</p>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Balance history</p>
         </div>
         <div className="flex items-center gap-1 rounded-lg bg-slate-100 p-1 dark:bg-slate-800" role="tablist" aria-label="Balance history range">
           {RANGES.map((r) => (
@@ -105,7 +105,7 @@ export function BalanceChart() {
           <>
             <p className="text-2xl font-bold text-slate-900 dark:text-slate-50">{formatCurrency(last)}</p>
             <p className={cn("mt-0.5 text-xs font-medium", change === 0 ? "text-slate-400" : change > 0 ? "text-emerald-600 dark:text-emerald-400" : "text-red-500")}>
-              {change === 0 ? "No change in range" : `${change > 0 ? "▲" : "▼"} ${formatCurrency(Math.abs(change))} over range`} (simulated)
+              {change === 0 ? "No change in range" : `${change > 0 ? "▲" : "▼"} ${formatCurrency(Math.abs(change))} over range`}
             </p>
           </>
         )}
@@ -139,7 +139,7 @@ export function BalanceChart() {
                 domain={["auto", "auto"]}
               />
               <Tooltip
-                formatter={(value) => [formatCurrency(Number(value)), "Simulated balance"]}
+                formatter={(value) => [formatCurrency(Number(value)), "Balance"]}
                 labelFormatter={(label) => formatDate(new Date(String(label)))}
                 contentStyle={{
                   borderRadius: 12,

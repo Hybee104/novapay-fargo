@@ -92,7 +92,7 @@ export function FargoAccountView() {
 
   return (
     <div className="space-y-6">
-      <PageHeader title="Account" description="Your Fargo simulated checking account details." />
+      <PageHeader title="Account" description="Your Fargo checking account details." />
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.4fr_1fr]">
         <Card>
@@ -144,7 +144,7 @@ export function FargoAccountView() {
                 </div>
               </dl>
             ) : (
-              <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">No Fargo account found for this simulation user.</p>
+              <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">No Fargo account found for this user.</p>
             )}
           </CardContent>
         </Card>

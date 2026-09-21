@@ -55,7 +55,7 @@ export function FargoBalanceHistoryView() {
     <div className="space-y-6">
       <PageHeader
         title="Balance History"
-        description="Fargo starts at a $0.00 simulated opening balance and tracks every change in the ledger."
+        description="Fargo starts at a $0.00 opening balance and tracks every change in the ledger."
       />
 
       <FargoBalanceChart />

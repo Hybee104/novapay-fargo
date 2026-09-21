@@ -4,7 +4,7 @@ import { DashboardShell } from "@/components/layout/DashboardShell";
 
 export const metadata: Metadata = {
   title: "Dashboard",
-  description: "Your NovaPAY Bank demo account overview.",
+  description: "Your NovaPAY Bank account overview.",
 };
 
 export const dynamic = "force-dynamic";

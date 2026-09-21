@@ -4,7 +4,7 @@ import { TransactionsView } from "@/components/transactions/TransactionsView";
 
 export const metadata: Metadata = {
   title: "Pending Transactions",
-  description: "Simulated transactions that are awaiting confirmation.",
+  description: "Transactions that are awaiting confirmation.",
 };
 
 export default function PendingTransactionsPage() {
@@ -12,7 +12,7 @@ export default function PendingTransactionsPage() {
     <div>
       <PageHeader
         title="Pending Transactions"
-        description="Simulated transfers awaiting confirmation. Nothing leaves this application."
+        description="Transfers awaiting confirmation."
       />
       <TransactionsView initialStatus="PENDING" />
     </div>

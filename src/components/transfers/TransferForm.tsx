@@ -78,11 +78,11 @@ export function TransferForm() {
     if (!form.amount.trim() || !Number.isFinite(amountValue) || amountValue <= 0) {
       next.amount = "Enter a valid USD amount.";
     } else if (amountValue > 10000000) {
-      next.amount = "Amount exceeds the simulated transfer limit ($10,000,000.00).";
+      next.amount = "Amount exceeds the transfer limit ($10,000,000.00).";
     }
-    if (form.currency !== "USD") next.currency = "Only USD is supported in this simulation.";
+    if (form.currency !== "USD") next.currency = "Only USD is supported.";
     if (form.currency === "USD" && available != null && amountValue > available) {
-      next.amount = "Insufficient simulated funds.";
+      next.amount = "Insufficient available funds.";
     }
     setErrors(next);
     return Object.keys(next).length === 0;
@@ -142,7 +142,7 @@ export function TransferForm() {
             <span className="rounded-full bg-emerald-50 p-4 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400">
               <CheckCircle2 className="size-10" aria-hidden="true" />
             </span>
-            <h2 className="mt-5 text-xl font-bold text-slate-900 dark:text-slate-50">Simulated transfer created</h2>
+            <h2 className="mt-5 text-xl font-bold text-slate-900 dark:text-slate-50">Transfer created</h2>
             <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
               Your transfer of <span className="font-semibold text-slate-800 dark:text-slate-200">{formatCurrency(Math.abs(result.amount))}</span> to{" "}
               <span className="font-semibold text-slate-800 dark:text-slate-200">{form.recipientName}</span> is now{" "}
@@ -151,7 +151,7 @@ export function TransferForm() {
             <div className="mt-5 w-full space-y-2 rounded-xl bg-slate-50 p-4 text-left text-sm dark:bg-slate-800/60">
               <Row label="Reference" value={result.reference} mono />
               <Row label="Status" value="PENDING" />
-              <Row label="Transfer fee" value="$0.00 (simulated)" />
+              <Row label="Transfer fee" value="$0.00" />
               <Row label="New available balance" value={formatCurrency((available ?? 0) - Math.abs(result.amount))} />
             </div>
             <div className="mt-6 flex w-full flex-col gap-2 sm:flex-row">
@@ -201,7 +201,7 @@ export function TransferForm() {
           <div className="mb-6 flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 dark:border-slate-800 dark:bg-slate-800/50">
             <span className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-300">
               <Wallet className="size-4" aria-hidden="true" />
-              Available simulated balance
+              Available balance
             </span>
             <span className="text-sm font-bold text-slate-900 dark:text-slate-50">
               {available == null ? "—" : formatCurrency(available)}
@@ -220,7 +220,7 @@ export function TransferForm() {
               <div>
                 <h2 className="mb-1 text-base font-semibold text-slate-900 dark:text-slate-100">Who are you sending to?</h2>
                 <p className="mb-4 text-sm text-slate-500 dark:text-slate-400">
-                  Enter a fictional recipient. Everything here is simulated.
+                  Enter the recipient details for your transfer.
                 </p>
                 <div className="space-y-4">
                   <Input
@@ -242,11 +242,11 @@ export function TransferForm() {
                   />
                   <Input
                     label="Recipient account / reference"
-                    placeholder="e.g. SIM-ACC-001234"
+                    placeholder="e.g. ACC-001234"
                     value={form.recipientReference}
                     onChange={(e) => setField("recipientReference", e.target.value)}
                     error={errors.recipientReference}
-                    hint="Use any fictional reference — it will not be validated against a real bank."
+                    hint="e.g. the recipient's account number or IBAN."
                     autoComplete="off"
                   />
                 </div>
@@ -255,7 +255,7 @@ export function TransferForm() {
               <div className="border-t border-slate-100 pt-5 dark:border-slate-800">
                 <h2 className="mb-1 text-base font-semibold text-slate-900 dark:text-slate-100">Transfer details</h2>
                 <p className="mb-4 text-sm text-slate-500 dark:text-slate-400">
-                  Amount is deducted from the simulated available balance.
+                  Amount is deducted from your available balance.
                 </p>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-[1fr_150px]">
                   <Input
@@ -277,7 +277,7 @@ export function TransferForm() {
                   />
                 </div>
                 <p id="amount-note" className="mt-2 text-xs text-slate-500 dark:text-slate-400">
-                  The demo currency is USD. No real currency conversion is performed.
+                  Transfers are processed in USD.
                 </p>
                 <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <Select
@@ -289,7 +289,7 @@ export function TransferForm() {
                   />
                   <Input
                     label="Description (optional)"
-                    placeholder="e.g. June rent — simulated"
+                    placeholder="e.g. June rent"
                     value={form.description}
                     onChange={(e) => setField("description", e.target.value)}
                     error={errors.description}
@@ -340,9 +340,9 @@ export function TransferForm() {
                   <Row label="Recipient email" value={form.recipientEmail} />
                   <Row label="Recipient reference" value={form.recipientReference} mono />
                   <Row label="Amount" value={formatCurrency(amountValue || 0)} strong />
-                  <Row label="Transfer fee" value="$0.00 (simulated)" />
+                  <Row label="Transfer fee" value="$0.00" />
                   <div className="!mt-4 flex items-center justify-between rounded-xl bg-slate-50 px-4 py-3 dark:bg-slate-800/60">
-                    <span className="font-semibold text-slate-700 dark:text-slate-200">Total (simulated)</span>
+                    <span className="font-semibold text-slate-700 dark:text-slate-200">Total</span>
                     <span className="text-lg font-bold text-slate-900 dark:text-slate-50">{formatCurrency(total)}</span>
                   </div>
                   <Row label="Purpose" value={form.purpose} />
@@ -363,11 +363,11 @@ export function TransferForm() {
                 loading={submitting}
                 onClick={() => void confirmTransfer()}
               >
-                {submitting ? "Creating simulated transfer…" : "Confirm Simulated Transfer"}
+                {submitting ? "Creating transfer…" : "Confirm Transfer"}
               </Button>
 
               <p className="text-center text-xs text-slate-400 dark:text-slate-500">
-                This is a simulated transaction. No real money will be transferred.
+                Transfers over $10,000,000.00 are not allowed.
               </p>
             </div>
           )}

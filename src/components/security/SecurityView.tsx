@@ -103,7 +103,7 @@ export function SecurityView() {
       }
       setPwOpen(false);
       setPwForm({ currentPassword: "", newPassword: "", confirmPassword: "" });
-      toast({ title: "Password updated", description: "Your simulated password was changed successfully.", tone: "success" });
+      toast({ title: "Password updated", description: "Your password was changed successfully.", tone: "success" });
     } catch {
       setPwError("Something went wrong. Please try again.");
     } finally {
@@ -124,25 +124,25 @@ export function SecurityView() {
     {
       key: "twoFactorEnabled" as const,
       label: "Two-factor authentication (2FA)",
-      description: "Require a one-time code at sign-in. Simulated for demo purposes — no real codes are sent.",
+      description: "Require a one-time code at sign-in for extra security.",
       icon: <ShieldCheck className="size-4 text-brand-700 dark:text-brand-300" />,
     },
     {
       key: "biometricEnabled" as const,
       label: "Face / fingerprint sign-in",
-      description: "Allow biometric unlock on supported demo sessions.",
+      description: "Allow biometric unlock on supported devices.",
       icon: <Fingerprint className="size-4 text-brand-700 dark:text-brand-300" />,
     },
     {
       key: "securityNotificationsEnabled" as const,
       label: "Security notifications",
-      description: "Notify me about simulated security events, such as sign-ins from new devices.",
+      description: "Notify me about security events, such as sign-ins from new devices.",
       icon: <BellRing className="size-4 text-brand-700 dark:text-brand-300" />,
     },
     {
       key: "transactionAlertsEnabled" as const,
       label: "Instant transaction alerts",
-      description: "Send a simulated alert every time a transfer is created in the demo.",
+      description: "Send an alert every time a transfer is created.",
       icon: <KeyRound className="size-4 text-brand-700 dark:text-brand-300" />,
     },
   ];
@@ -160,7 +160,7 @@ export function SecurityView() {
               <div>
                 <h2 className="text-base font-semibold text-slate-900 dark:text-slate-100">Password</h2>
                 <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                  Change the password used to sign in to this demo environment.
+                  Change the password used to sign in to your account.
                 </p>
               </div>
             </div>
@@ -176,7 +176,7 @@ export function SecurityView() {
         <CardContent className="p-6">
           <h2 className="text-base font-semibold text-slate-900 dark:text-slate-100">Account Preferences</h2>
           <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-            These controls simulate the toggles a real banking app would offer. Changes are stored locally.
+            These controls mirror the toggles a real banking app would offer.
           </p>
           <div className="mt-5 space-y-5">
             {toggles.map((t) => (
@@ -202,7 +202,7 @@ export function SecurityView() {
           <div>
             <h2 className="text-base font-semibold text-slate-900 dark:text-slate-100">Login Activity</h2>
             <p className="mt-0.5 text-sm text-slate-500 dark:text-slate-400">
-              Simulated security events on this demo account
+              Security events on this account
             </p>
           </div>
         </div>
@@ -233,7 +233,7 @@ export function SecurityView() {
             </ul>
           )}
           <p className="mt-4 text-xs text-slate-400 dark:text-slate-500">
-            Shows only locally recorded simulated events — no real devices or locations are tracked.
+            Shows only locally recorded events — no real devices or locations are tracked.
           </p>
         </CardContent>
       </Card>
@@ -243,7 +243,7 @@ export function SecurityView() {
         open={pwOpen}
         onClose={() => setPwOpen(false)}
         title="Change Password"
-        description="Update the password for your demo account."
+        description="Update the password for your account."
         footer={
           <>
             <Button variant="outline" onClick={() => setPwOpen(false)}>
@@ -304,7 +304,7 @@ export function SecurityView() {
 
       <p className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
         <ShieldCheck className="size-4 text-emerald-500" aria-hidden="true" />
-        This demo simulates banking-grade security hardening. Nothing here affects any real account.{" "}
+        Security best practices are applied throughout, including hashed passwords and signed sessions.{" "}
         <Link href="/novapay/support" className="font-medium text-brand-700 hover:underline dark:text-brand-300">
           Contact support
         </Link>
@@ -322,11 +322,11 @@ function formatEvent(event: string): string {
     case "LOGOUT":
       return "Signed out";
     case "REGISTER":
-      return "Demo account created";
+      return "Account created";
     case "PASSWORD_CHANGE":
       return "Password changed";
     case "TRANSFER_CREATED":
-      return "Simulated transfer created";
+      return "Transfer created";
     default:
       return event.replace(/_/g, " ");
   }

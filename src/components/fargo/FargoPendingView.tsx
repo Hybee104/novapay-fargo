@@ -65,7 +65,7 @@ export function FargoPendingView() {
       ) : rows.length === 0 ? (
         <EmptyState
           title="No pending payments"
-          description="Payments you create stay pending until the simulated status logic advances them."
+          description="Payments you create stay pending until they are approved."
         />
       ) : (
         <>

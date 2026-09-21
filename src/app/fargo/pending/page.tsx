@@ -3,7 +3,7 @@ import { FargoPendingView } from "@/components/fargo/FargoPendingView";
 
 export const metadata: Metadata = {
   title: "Pending",
-  description: "Pending simulated Fargo payments.",
+  description: "Pending Fargo payments.",
 };
 
 export default function FargoPendingPage() {

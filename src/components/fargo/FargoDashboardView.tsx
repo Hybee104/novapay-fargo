@@ -107,7 +107,7 @@ export function FargoDashboardView() {
     <div className="space-y-6">
       <PageHeader
         title={`${greeting} — Fargo`}
-        description="Here is an overview of your simulated Fargo account activity."
+        description="Here is an overview of your Fargo account activity."
         actions={
           <Link href="/fargo/payments/new">
             <Button variant="fargo">
@@ -125,13 +125,13 @@ export function FargoDashboardView() {
             <div>
               <div className="flex items-center gap-2 text-sm font-medium text-slate-500 dark:text-slate-400">
                 <Wallet className="size-4" aria-hidden="true" />
-                Available Balance (simulated)
+                Available Balance
               </div>
               <p className="mt-2 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-slate-50">
                 {formatCurrency(data.availableBalance)}
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
-                <StatusBadge status={data.account?.status ?? "Active — Demo"} />
+                <StatusBadge status={data.account?.status ?? "Active"} />
                 <span className="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">
                   {data.account?.accountNumber ?? ""}
                 </span>
@@ -153,7 +153,7 @@ export function FargoDashboardView() {
           icon={<Wallet className="size-5" aria-hidden="true" />}
           label="Available Balance"
           value={formatCurrency(data.availableBalance)}
-          sub="Simulated available funds"
+          sub="Available funds"
           href="/fargo/balance-history"
         />
         <StatCard
@@ -167,7 +167,7 @@ export function FargoDashboardView() {
           icon={<CreditCard className="size-5" aria-hidden="true" />}
           label="Total Transactions"
           value={data.totalTransactions.toLocaleString("en-US")}
-          sub="All-time simulated ledger entries"
+          sub="All-time ledger entries"
           href="/fargo/transactions"
         />
         <StatCard
@@ -193,7 +193,7 @@ export function FargoDashboardView() {
         <CardContent className="pt-2">
           {data.recent.length === 0 ? (
             <EmptyState
-              title="No simulated Fargo activity yet."
+              title="No Fargo activity yet."
               description="Transfer funds in from NovaPAY or create a payment to see activity here."
             />
           ) : (

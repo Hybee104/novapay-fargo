@@ -17,7 +17,7 @@ interface Params {
 
 export const metadata: Metadata = {
   title: "Transaction Details",
-  description: "Details of a simulated transaction.",
+  description: "Details of a transaction.",
 };
 
 export default async function TransactionDetailPage({ params }: { params: Promise<Params> }) {
@@ -92,7 +92,7 @@ export default async function TransactionDetailPage({ params }: { params: Promis
           <div className="mt-6 rounded-2xl border border-dashed border-slate-300 p-5 text-center dark:border-slate-700">
             <p className="text-sm font-semibold text-slate-700 dark:text-slate-200">Official receipt available for this transaction</p>
             <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-              This simulated receipt would typically be provided as a downloadable PDF by the bank.
+              This receipt would typically be provided as a downloadable PDF by the bank.
             </p>
           </div>
         </CardContent>
@@ -103,11 +103,11 @@ export default async function TransactionDetailPage({ params }: { params: Promis
         <p>
           {t.status === "PENDING" ? (
             <>
-              This simulated transfer is waiting to be processed. As a demo, it may stay pending until a simulated approval occurs. The displayed available balance already excludes pending debits.
+              This transfer is waiting to be processed. It may stay pending until approval is confirmed. The displayed available balance already excludes pending debits.
             </>
           ) : (
             <>
-              A simulated record stored in the local NovaPAY Bank demo database (<span className="font-mono">dev.db</span>).{" "}
+              A record stored in the NovaPAY Bank database (<span className="font-mono">dev.db</span>).{" "}
               <span className="inline-flex items-center gap-0.5">
                 <Copy className="size-3" aria-hidden="true" /> Reference copied when requested
               </span>

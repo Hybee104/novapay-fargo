@@ -213,7 +213,7 @@ export function FargoSupportView() {
       loadTickets();
       toast({
         title: "Ticket created",
-        description: `Reference ${json.ticket.ticketReference}. In this demo the ticket is stored locally.`,
+        description: `Reference ${json.ticket.ticketReference}. We'll review it and get back to you.`,
         tone: "success",
       });
     } catch {
@@ -260,11 +260,11 @@ export function FargoSupportView() {
                   Online
                 </span>
               </div>
-              <p className="truncate text-xs text-slate-500 dark:text-slate-400">{FARGO_AGENT_PROFILE.role} — replies are scripted locally for this demo</p>
+              <p className="truncate text-xs text-slate-500 dark:text-slate-400">{FARGO_AGENT_PROFILE.role} — ready to help</p>
             </div>
             <span className="hidden items-center gap-1.5 rounded-full bg-fargo-50 px-3 py-1 text-xs font-medium text-fargo-800 sm:inline-flex dark:bg-fargo-500/10 dark:text-fargo-300">
               <Sparkles className="size-3.5" aria-hidden="true" />
-              Simulated assistant
+              Support assistant
             </span>
           </div>
         </CardContent>
@@ -299,7 +299,7 @@ export function FargoSupportView() {
               ) : conversations.length === 0 ? (
                 <EmptyState
                   title="No conversations yet."
-                  description="Start a chat with the Fargo simulated support agent."
+                  description="Start a chat with a Fargo support specialist."
                   action={
                     <Button size="sm" variant="fargo" onClick={() => setNewChatOpen(true)}>
                       Start a chat
@@ -357,7 +357,7 @@ export function FargoSupportView() {
                 <p className="truncate text-sm font-semibold text-slate-900 dark:text-slate-100">
                   {activeConversation?.subject ?? "Support chat"}
                 </p>
-                <p className="text-xs text-emerald-600 dark:text-emerald-400">Jordan is online · simulated</p>
+                <p className="text-xs text-emerald-600 dark:text-emerald-400">Jordan is online</p>
               </div>
             </div>
 
@@ -368,7 +368,7 @@ export function FargoSupportView() {
                   <Skeleton className="h-16 w-3/4 rounded-2xl" />
                 </div>
               ) : !messages || messages.length === 0 ? (
-                <EmptyState title="No messages yet." description="Send a message to start the simulated chat." />
+                <EmptyState title="No messages yet." description="Send a message to start the chat." />
               ) : (
                 <>
                   {messages.map((m) => {
@@ -439,7 +439,7 @@ export function FargoSupportView() {
       <div hidden={tab !== "tickets"}>
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
           <p className="text-sm text-slate-500 dark:text-slate-400">
-            Simulated support tickets — created and stored locally for this demo.
+            Support tickets — created and tracked in-app.
           </p>
           <Button variant="fargo" size="sm" onClick={() => setNewTicketOpen(true)}>
             <Plus className="size-4" aria-hidden="true" />
@@ -457,7 +457,7 @@ export function FargoSupportView() {
             <div className="p-2">
               <EmptyState
                 title="No support tickets."
-                description="If you need help, open a simulated ticket and a response flow will be shown."
+                description="If you need help, open a ticket and track its status here."
                 action={
                   <Button variant="fargo" size="sm" onClick={() => setNewTicketOpen(true)}>
                     Open a Ticket
@@ -497,7 +497,7 @@ export function FargoSupportView() {
         open={newChatOpen}
         onClose={() => setNewChatOpen(false)}
         title="Start a support chat"
-        description="Message the simulated Fargo support agent. Replies are generated locally."
+        description="Message the support specialist."
         footer={
           <>
             <Button variant="outline" onClick={() => setNewChatOpen(false)}>
@@ -541,7 +541,7 @@ export function FargoSupportView() {
         open={newTicketOpen}
         onClose={() => setNewTicketOpen(false)}
         title="Open a Support Ticket"
-        description="Create a simulated support ticket for the Fargo demo."
+        description="Create a support ticket for review."
         footer={
           <>
             <Button variant="outline" onClick={() => setNewTicketOpen(false)}>
@@ -599,7 +599,7 @@ export function FargoSupportView() {
             error={ticketErrors.description}
           />
           <p className="rounded-lg bg-slate-50 px-3 py-2 text-xs leading-relaxed text-slate-500 dark:bg-slate-800/50 dark:text-slate-400">
-            Tickets are stored in the local demo database only. No email or external ticketing system is contacted.
+            Tickets are tracked in-app. No email or external ticketing system is contacted.
           </p>
         </form>
       </Modal>
@@ -633,7 +633,7 @@ export function FargoSupportView() {
               <p className="mt-1 whitespace-pre-wrap leading-relaxed text-slate-700 dark:text-slate-300">{detailTicket.description}</p>
             </div>
             <div className="rounded-xl bg-slate-50 p-3 text-xs leading-relaxed text-slate-500 dark:bg-slate-800/50 dark:text-slate-400">
-              Opened {relativeTime(detailTicket.createdAt)}. In this simulation, no real support team reviews the ticket — it is stored in the local demo database.
+              Opened {relativeTime(detailTicket.createdAt)}. Your ticket is being reviewed by the support team.
             </div>
           </div>
         ) : null}

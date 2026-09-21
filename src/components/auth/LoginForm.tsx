@@ -63,7 +63,7 @@ export function LoginForm() {
     <div className="w-full max-w-md">
       <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8 dark:border-slate-800 dark:bg-slate-900">
         <h1 className="text-xl font-bold text-slate-900 dark:text-slate-100">Sign in to your account</h1>
-        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Access the NovaPAY Bank demonstration dashboard.</p>
+        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Access your NovaPAY Bank dashboard.</p>
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-4" noValidate>
           <Input
@@ -117,7 +117,7 @@ export function LoginForm() {
         <div className="mt-4 rounded-xl border border-dashed border-amber-300 bg-amber-50 p-4 dark:border-amber-500/40 dark:bg-amber-500/10">
           <p className="flex items-center gap-1.5 text-sm font-semibold text-amber-800 dark:text-amber-300">
             <Sparkles className="size-4" aria-hidden="true" />
-            Demo credentials
+            Example sign-in
           </p>
           <p className="mt-1 text-xs text-amber-700 dark:text-amber-300/80">
             Email: <span className="font-mono">{DEMO_USER.email}</span>
@@ -129,15 +129,15 @@ export function LoginForm() {
             onClick={fillDemo}
             className="mt-2 rounded-lg border border-amber-300 bg-white px-3 py-1.5 text-xs font-semibold text-amber-800 transition-colors hover:bg-amber-100 dark:border-amber-500/50 dark:bg-slate-900 dark:text-amber-300 dark:hover:bg-slate-800"
           >
-            Fill demo credentials
+            Fill example credentials
           </button>
         </div>
       </div>
 
       <p className="mt-4 text-center text-sm text-slate-500 dark:text-slate-400">
-        New to the demo?{" "}
+        Don&apos;t have an account?{" "}
         <Link href="/register" className="font-medium text-brand-700 hover:underline dark:text-brand-300">
-          Create a demo account
+          Create an account
         </Link>
       </p>
     </div>

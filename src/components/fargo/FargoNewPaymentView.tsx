@@ -54,7 +54,7 @@ export function FargoNewPaymentView() {
     <div className="space-y-6">
       <PageHeader
         title="New Payment"
-        description="Create a simulated Fargo payment. It is always created with a PENDING status."
+        description="Create a Fargo payment. It is always created with a PENDING status."
       />
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.4fr_1fr]">
@@ -148,7 +148,7 @@ export function FargoNewPaymentView() {
                 </li>
                 <li className="flex gap-2">
                   <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-fargo-600 dark:text-fargo-400" aria-hidden="true" />
-                  No real money moves. This is a simulation.
+                  Payments move through a PENDING status until they settle.
                 </li>
               </ul>
             </CardContent>
@@ -159,7 +159,7 @@ export function FargoNewPaymentView() {
               <p className="flex items-start gap-2.5 text-xs text-slate-500 dark:text-slate-400">
                 <Info className="mt-px size-4 shrink-0 text-fargo-600 dark:text-fargo-400" aria-hidden="true" />
                 <span>
-                  Fargo is a {FARGO_ACCOUNT.type.toLowerCase()} with a simulated opening balance of {formatCurrency(0)}. Transfer
+                  Fargo is a {FARGO_ACCOUNT.type.toLowerCase()} with an opening balance of {formatCurrency(0)}. Transfer
                   funds in from NovaPAY to make payments.
                 </span>
               </p>

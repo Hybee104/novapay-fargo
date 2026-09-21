@@ -57,7 +57,7 @@ export function validateFargoPayment(body: unknown): ValidationResult<FargoPayme
 
   if (amount === null) errors.amount = "Enter a valid USD amount.";
   else if (amount <= 0) errors.amount = "Amount must be greater than zero.";
-  else if (amount > 10000000) errors.amount = "Amount exceeds the simulated payment limit ($10,000,000.00).";
+  else if (amount > 10000000) errors.amount = "Amount exceeds the payment limit ($10,000,000.00).";
 
   if (!category) errors.category = "Category is required.";
   else if (!FARGO_PAYMENT_CATEGORIES.includes(category)) errors.category = "Select a valid category.";
@@ -84,7 +84,7 @@ export function validateFargoTransfer(body: unknown): ValidationResult<FargoTran
 
   if (amount === null) errors.amount = "Enter a valid USD amount.";
   else if (amount <= 0) errors.amount = "Amount must be greater than zero.";
-  else if (amount > 10000000) errors.amount = "Amount exceeds the simulated transfer limit ($10,000,000.00).";
+  else if (amount > 10000000) errors.amount = "Amount exceeds the transfer limit ($10,000,000.00).";
 
   if (description.length > 240) errors.description = "Description must be 240 characters or fewer.";
 

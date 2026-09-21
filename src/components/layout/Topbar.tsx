@@ -52,7 +52,7 @@ export function Topbar({ onOpenMenu, userName }: TopbarProps) {
 
       <div className="flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-emerald-700 dark:border-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-400">
         <ShieldCheck className="size-3.5" aria-hidden="true" />
-        <span className="text-xs font-semibold">Simulated Session</span>
+        <span className="text-xs font-semibold">Active Session</span>
       </div>
 
       <div className="ml-auto flex items-center gap-1.5">

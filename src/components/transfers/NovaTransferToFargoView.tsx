@@ -9,7 +9,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
-import { FARGO_BANK_NAME, FARGO_ACCOUNT, SIMULATION_COPY } from "@/lib/constants";
+import { FARGO_BANK_NAME, FARGO_ACCOUNT } from "@/lib/constants";
 import { formatCurrency } from "@/lib/utils";
 
 export function NovaTransferToFargoView() {
@@ -54,7 +54,7 @@ export function NovaTransferToFargoView() {
     <div className="space-y-6">
       <PageHeader
         title={`Transfer to ${FARGO_BANK_NAME}`}
-        description="Move simulated funds from your NovaPAY account into Fargo. Both sides are updated atomically in the local database."
+        description="Move funds from your NovaPAY account into Fargo. Both sides are updated in your account ledger."
       />
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.4fr_1fr]">
@@ -142,8 +142,8 @@ export function NovaTransferToFargoView() {
               <p className="flex items-start gap-2.5 text-xs text-slate-500 dark:text-slate-400">
                 <Info className="mt-px size-4 shrink-0 text-brand-600 dark:text-brand-400" aria-hidden="true" />
                 <span>
-                  Fargo is a {FARGO_ACCOUNT.type.toLowerCase()} with a simulated opening balance of {formatCurrency(0)}.{" "}
-                  {SIMULATION_COPY}
+                  Fargo is a {FARGO_ACCOUNT.type.toLowerCase()} with an opening balance of {formatCurrency(0)}. Transfer
+                  funds in from NovaPAY to get started.
                 </span>
               </p>
             </CardContent>
