@@ -38,6 +38,17 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid email or password." }, { status: 401 });
   }
 
+  // A deactivated account is refused even with the correct password. Checked
+  // after the password check so we never confirm an email/password pair to a
+  // caller who does not own it.
+  if (!user.isActive) {
+    await logAuthEvent(user.id, "LOGIN_BLOCKED_INACTIVE", { userAgent: req.headers.get("user-agent") });
+    return NextResponse.json(
+      { error: "Your account has been deactivated. Please contact support." },
+      { status: 403 },
+    );
+  }
+
   await setSessionCookie(user.id);
   await logAuthEvent(user.id, "LOGIN", { userAgent: req.headers.get("user-agent") });
 

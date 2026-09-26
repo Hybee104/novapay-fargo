@@ -114,7 +114,9 @@ export async function getCurrentUser(): Promise<SessionUser | null> {
     where: { id: payload.sub },
     include: { accounts: true },
   });
-  if (!user) return null;
+  // A deactivated account keeps its data but loses access immediately: any
+  // existing session stops resolving, which logs the user out everywhere.
+  if (!user || !user.isActive) return null;
   const account = user.accounts.find((a) => a.bank === BANK_NOVAPAY) ?? user.accounts[0] ?? null;
   return { ...user, account, accounts: user.accounts };
 }
@@ -122,6 +124,27 @@ export async function getCurrentUser(): Promise<SessionUser | null> {
 export async function requireUser(): Promise<SessionUser> {
   const user = await getCurrentUser();
   if (!user) redirect("/login");
+  return user;
+}
+
+// ---- Admin authorization (reuses the same session cookie + User row) ----
+
+/**
+ * Returns the signed-in user only when they are an administrator.
+ * Used by admin API routes, which answer with a status code rather than
+ * redirecting.
+ */
+export async function getAdminUser(): Promise<SessionUser | null> {
+  const user = await getCurrentUser();
+  if (!user || !user.isAdmin) return null;
+  return user;
+}
+
+/** Page guard for admin screens. */
+export async function requireAdmin(): Promise<SessionUser> {
+  const user = await getCurrentUser();
+  if (!user) redirect("/login");
+  if (!user.isAdmin) redirect("/novapay/dashboard");
   return user;
 }
 

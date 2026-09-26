@@ -19,6 +19,13 @@ model User {
   email                        String   @unique
   passwordHash                 String
   phone                        String?
+  // Account status. Deactivated users keep all of their data (accounts,
+  // transactions, ...) but are refused at sign-in and their existing sessions
+  // stop resolving. Managed from the admin dashboard.
+  isActive                     Boolean  @default(true)
+  // Grants access to the admin account-management screens. Uses the same
+  // session cookie and password flow as every other user.
+  isAdmin                      Boolean  @default(false)
   twoFactorEnabled             Boolean  @default(false)
   securityNotificationsEnabled Boolean  @default(true)
   biometricEnabled             Boolean  @default(false)

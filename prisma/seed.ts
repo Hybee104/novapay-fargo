@@ -496,6 +496,8 @@ async function main() {
       email: DEMO_USER.email,
       passwordHash,
       phone: DEMO_USER.phone,
+      isActive: true,
+      isAdmin: true,
       twoFactorEnabled: false,
       biometricEnabled: false,
       securityNotificationsEnabled: true,

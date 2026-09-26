@@ -9,6 +9,7 @@ import {
   Mail,
   Phone,
   RefreshCw,
+  ShieldCheck,
   User as UserIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -24,6 +25,7 @@ interface Profile {
   lastName: string;
   email: string;
   phone: string;
+  isAdmin?: boolean;
 }
 
 interface AccountInfo {
@@ -59,7 +61,7 @@ export function AccountView() {
     ])
       .then(([acc, stats]) => {
         setData({
-          profile: acc.profile ?? { firstName: "", lastName: "", email: "", phone: "" },
+          profile: acc.profile ?? { firstName: "", lastName: "", email: "", phone: "", isAdmin: false },
           account: acc.account ?? null,
           balance: stats?.summary?.balance ?? 0,
         });
@@ -145,10 +147,21 @@ export function AccountView() {
                 </div>
               </div>
             </div>
-            <Button variant="outline" onClick={openEdit}>
-              <UserIcon className="size-4" aria-hidden="true" />
-              Edit Profile
-            </Button>
+            <div className="flex flex-col gap-3 sm:items-end">
+              {profile.isAdmin && (
+                <Link
+                  href="/admin"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-brand-200 bg-brand-50 px-3 py-1.5 text-sm font-medium text-brand-800 transition-colors hover:bg-brand-100 dark:border-brand-500/30 dark:bg-brand-500/10 dark:text-brand-300"
+                >
+                  <ShieldCheck className="size-4" aria-hidden="true" />
+                  Admin console
+                </Link>
+              )}
+              <Button variant="outline" onClick={openEdit}>
+                <UserIcon className="size-4" aria-hidden="true" />
+                Edit Profile
+              </Button>
+            </div>
           </div>
         </CardContent>
       </Card>

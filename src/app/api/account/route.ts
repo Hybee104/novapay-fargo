@@ -21,6 +21,7 @@ export async function GET() {
       lastName: user.lastName,
       email: user.email,
       phone: user.phone,
+      isAdmin: user.isAdmin,
     },
     account: account
       ? {
