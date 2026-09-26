@@ -19,6 +19,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Modal } from "@/components/ui/Modal";
 import { SkeletonCard } from "@/components/ui/Skeleton";
 import { formatCurrency, formatDate, initials } from "@/lib/utils";
+import { DemoNotice } from "@/components/ui/DemoNotice";
 
 interface Profile {
   firstName: string;
@@ -180,7 +181,9 @@ export function AccountView() {
           <div className="mt-4 rounded-2xl bg-slate-900 p-5 text-white shadow-inner dark:bg-slate-800/80">
             <p className="text-xs font-medium uppercase tracking-wider text-slate-400">{account?.type ?? "Premium Dollar Checking Account"}</p>
             <p className="mt-2 text-2xl font-bold sm:text-3xl">{formatCurrency(data.balance)}</p>
-            <p className="mt-1 text-xs text-slate-400">Available balance</p>
+            <p className="mt-1 text-xs text-slate-400">
+              Available balance — simulated demo figure
+            </p>
             <div className="mt-4 grid grid-cols-2 gap-3 border-t border-white/10 pt-4 font-mono text-sm">
               <div>
                 <p className="text-[10px] font-medium uppercase tracking-wide text-slate-400">Account number</p>
@@ -191,6 +194,10 @@ export function AccountView() {
                 <p>{account?.routingNumber ?? "084000026"}</p>
               </div>
             </div>
+          </div>
+
+          <div className="mt-4">
+            <DemoNotice variant="inline" />
           </div>
 
           <dl className="mt-5 space-y-3 text-sm">

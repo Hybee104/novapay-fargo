@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { requireUser } from "@/lib/auth";
 import { FargoShell } from "@/components/fargo/FargoShell";
+import { DemoNotice } from "@/components/ui/DemoNotice";
 
 export const metadata: Metadata = {
-  title: "Fargo",
-  description: "Your Fargo digital checking account.",
+  title: "Fargo (Demo)",
+  description: "Demo Fargo checking area. Fictional project — not a real bank.",
 };
 
 export const dynamic = "force-dynamic";
@@ -12,8 +13,11 @@ export const dynamic = "force-dynamic";
 export default async function FargoLayout({ children }: { children: React.ReactNode }) {
   const user = await requireUser();
   return (
-    <FargoShell userName={`${user.firstName} ${user.lastName}`} userEmail={user.email}>
-      {children}
-    </FargoShell>
+    <>
+      <DemoNotice variant="banner" bankName="Fargo" />
+      <FargoShell userName={`${user.firstName} ${user.lastName}`} userEmail={user.email}>
+        {children}
+      </FargoShell>
+    </>
   );
 }

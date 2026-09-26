@@ -487,7 +487,18 @@ async function main() {
   await prisma.account.deleteMany();
   await prisma.user.deleteMany();
 
-  const passwordHash = await hashPassword(DEMO_USER.password);
+  // The demo password is never stored in source control. It must be supplied
+  // via the DEMO_USER_PASSWORD environment variable (see .env.example) so that
+  // no working credential is ever committed or rendered into the application.
+  const demoPassword = process.env.DEMO_USER_PASSWORD;
+  if (!demoPassword) {
+    throw new Error(
+      "DEMO_USER_PASSWORD is not set. Provide the demo account password through the environment " +
+        "before running the seed. Never hardcode it in source control.",
+    );
+  }
+
+  const passwordHash = await hashPassword(demoPassword);
 
   const user = await prisma.user.create({
     data: {

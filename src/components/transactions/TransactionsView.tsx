@@ -13,6 +13,7 @@ import { EmptyState } from "@/components/ui/EmptyState";
 import { SkeletonTableRows } from "@/components/ui/Skeleton";
 import { Table, TableBody, TableCell, TableHead, TableHeaderCell, TableRow } from "@/components/ui/Table";
 import { cn, formatCurrencyWithSign, formatDateTime, relativeTime } from "@/lib/utils";
+import { DemoNotice } from "@/components/ui/DemoNotice";
 
 interface Tx {
   id: string;
@@ -121,6 +122,8 @@ export function TransactionsView({ initialStatus }: { initialStatus?: string }) 
 
   return (
     <div className="space-y-5">
+      <DemoNotice variant="inline" />
+
       {/* Pending filter chips */}
       <div className="flex flex-wrap items-center gap-2">
         <FilterChip active={status === STATUSES[0]} onClick={() => applyPreset(STATUSES[0])}>

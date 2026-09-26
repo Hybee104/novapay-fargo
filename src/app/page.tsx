@@ -3,22 +3,23 @@ import {
   ArrowRight,
   BarChart3,
   BellRing,
+  FlaskConical,
   Headphones,
-  Landmark,
   LayoutGrid,
   Moon,
   MoveUpRight,
   ScanFace,
   ShieldCheck,
-  Sparkles,
 } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
-import { DEMO_USER, BANK_TAGLINE } from "@/lib/constants";
+import { DemoNotice } from "@/components/ui/DemoNotice";
+import { BANK_TAGLINE } from "@/lib/constants";
 
 export const metadata = {
-  title: "NovaPAY Bank",
-  description: "NovaPAY Bank — digital banking made simple.",
+  title: "NovaPAY Bank — Fictional Banking Demonstration",
+  description:
+    "NovaPAY BANK is a fictional banking demonstration. No real banking services, accounts, or money are provided.",
 };
 
 export default function LandingPage() {
@@ -52,28 +53,33 @@ export default function LandingPage() {
         <section className="relative overflow-hidden">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_70%_20%,rgba(68,113,179,0.16),transparent_60%)]" aria-hidden="true" />
           <div className="relative mx-auto max-w-6xl px-4 pb-16 pt-16 text-center sm:px-6 sm:pt-24">
-            <div className="mx-auto inline-flex items-center gap-2 rounded-full bg-brand-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-brand-800 dark:bg-brand-500/10 dark:text-brand-300">
-              <Sparkles className="size-3.5" aria-hidden="true" />
-              Secure digital banking
+            <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-amber-300/70 bg-amber-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-amber-800 dark:border-amber-500/40 dark:bg-amber-950/40 dark:text-amber-200">
+              <FlaskConical className="size-3.5" aria-hidden="true" />
+              Fictional demo project
             </div>
             <h1 className="mx-auto mt-6 max-w-3xl text-4xl font-black tracking-tight text-slate-900 sm:text-6xl dark:text-white">
-              Modern digital banking,
-              <span className="text-brand-700 dark:text-brand-400"> built for you.</span>
+              A fictional banking UI,
+              <span className="text-brand-700 dark:text-brand-400"> built for demonstration.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg dark:text-slate-300">
-              {BANK_TAGLINE}. Explore balances, transfers, transaction history, analytics, notifications and support — all in one place, ready to explore.
+              {BANK_TAGLINE}. A portfolio project that exercises dashboards, transfers,
+              transaction history, analytics, notifications and support — with entirely invented
+              data.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link href="/login" className="w-full sm:w-auto">
                 <Button size="lg" fullWidth>
-                  Sign in to NovaPAY
+                  Open the demo
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </Button>
               </Link>
             </div>
-            <p className="mt-4 font-mono text-xs text-slate-400 dark:text-slate-500">
-              Example login: {DEMO_USER.email} · {DEMO_USER.password}
+            <p className="mt-4 text-xs text-slate-500 dark:text-slate-400">
+              No sign-up is public — an administrator creates demo accounts.
             </p>
+            <div className="mx-auto mt-8 max-w-2xl text-left">
+              <DemoNotice />
+            </div>
           </div>
         </section>
 
@@ -117,32 +123,45 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Demo section */}
+        {/* Demo contents */}
         <section id="account" className="border-y border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900/40">
           <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-            <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
+            <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2">
               <div>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-800 dark:bg-brand-500/10 dark:text-brand-300">
-                  <Landmark className="size-3.5" aria-hidden="true" />
-                  Seeded account
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-300/70 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-800 dark:border-amber-500/40 dark:bg-amber-950/40 dark:text-amber-200">
+                  <FlaskConical className="size-3.5" aria-hidden="true" />
+                  Sample data generator
                 </span>
                 <h2 className="mt-4 text-2xl font-bold text-slate-900 sm:text-3xl dark:text-white">
-                  Start with a $650,000.00 opening balance
+                  Every account starts with generated history
                 </h2>
                 <p className="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-                  Your account comes with a full 2021–2026 transaction history, an opening balance of
-                  $650,000.00, pending transfers, notifications and a ready-to-use support conversation. Every entry
-                  is marked PENDING or COMPLETED in the ledger.
+                  When an administrator provisions a demo account, the app deterministically
+                  generates a multi-year ledger of invented transactions, monthly balance snapshots,
+                  pending items, notifications and a support conversation. Every figure is synthetic
+                  test data chosen to exercise the interface.
                 </p>
                 <ul className="mt-6 space-y-3 text-sm text-slate-700 dark:text-slate-300">
-                  <Bullet>Premium Dollar Checking account in USD</Bullet>
-                  <Bullet>5 years of transaction history</Bullet>
-                  <Bullet>Pending-transfer workflow with reserved funds</Bullet>
-                  <Bullet>Fully responsive with dark mode support</Bullet>
+                  <Bullet>Deterministic multi-year transaction history</Bullet>
+                  <Bullet>Pending and completed ledger states</Bullet>
+                  <Bullet>Monthly balance snapshots for charting</Bullet>
+                  <Bullet>Synthetic counterparties and references</Bullet>
                 </ul>
               </div>
-              <div className="rounded-2xl border border-slate-200 bg-slate-950 p-6 shadow-2xl dark:border-slate-800">
-                <BalanceMock />
+              <div className="space-y-4">
+                <DemoNotice
+                  bankName="Fargo"
+                  message="NovaPAY and Fargo are both invented brands created for this demo. The account numbers, routing numbers, balances and transaction records shown inside the app are fabricated sample values."
+                />
+                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm leading-relaxed text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
+                  <p className="font-semibold text-slate-900 dark:text-slate-100">What this is not</p>
+                  <ul className="mt-2 space-y-1.5">
+                    <li>Not a bank, lender, or licensed financial institution</li>
+                    <li>Not connected to any payment network or real account</li>
+                    <li>Not able to hold, move, or request real money</li>
+                    <li>Not an offer of any financial product or service</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -154,15 +173,19 @@ export default function LandingPage() {
           <div className="mt-8 space-y-3">
             <FaqItem
               q="Is this a real bank?"
-              a="NovaPAY Bank is a digital banking platform — there is no real bank, account, card, or financial service behind it."
+              a="No. NovaPAY is a fictional banking application built as a software demonstration project. There is no real bank, account, card, or financial service behind it, and the NovaPAY and Fargo brands are invented for this demo."
             />
             <FaqItem
               q="Can I lose or send real money?"
-              a="No real money is ever sent or received. Transfers only update a numeric balance inside your bank account."
+              a="No. There is no real money anywhere in this project. Transfers only change a synthetic number inside this demonstration application."
+            />
+            <FaqItem
+              q="Are the balances and transactions real?"
+              a="No. Balances, account and routing numbers, counterparties and the full transaction history are generated sample data created to exercise the interface."
             />
             <FaqItem
               q="Is my data safe / private?"
-              a="Everything stays on your machine. Passwords are hashed with scrypt, sessions use signed cookies, and nothing is uploaded anywhere."
+              a="Sign-in details are hashed with scrypt and sessions use signed cookies. Never reuse a real password here — this is a demo, not a service."
             />
           </div>
           <p className="mt-8 text-center text-sm text-slate-500 dark:text-slate-400">
@@ -178,7 +201,7 @@ export default function LandingPage() {
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 px-4 text-center sm:px-6">
           <Logo />
           <p className="text-xs text-slate-500 dark:text-slate-400">
-            © 2026 NovaPAY Bank. All rights reserved.
+            © 2026 NovaPAY — a fictional demo project. Not a real bank.
           </p>
         </div>
       </footer>
@@ -210,48 +233,6 @@ function FaqItem({ q, a }: { q: string; a: string }) {
     <div className="rounded-xl border border-slate-200 bg-white px-5 py-4 dark:border-slate-800 dark:bg-slate-900">
       <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">{q}</p>
       <p className="mt-1.5 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{a}</p>
-    </div>
-  );
-}
-
-function BalanceMock() {
-  return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between text-xs text-slate-400">
-        <span className="flex items-center gap-1.5">
-          <Moon className="size-3.5" aria-hidden="true" />
-          Dashboard preview
-        </span>
-        <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 font-semibold text-emerald-400">Active</span>
-      </div>
-      <div>
-        <p className="text-[11px] font-medium uppercase tracking-wide text-slate-500">Available balance</p>
-        <p className="mt-1 text-3xl font-bold text-white">$650,000.00</p>
-        <p className="mt-1 flex items-center gap-1.5 text-xs text-slate-400">
-          <ScanFace className="size-3.5" aria-hidden="true" />
-          Premium Dollar Checking · USD
-        </p>
-      </div>
-      <div className="grid grid-cols-2 gap-3">
-        <MockStat label="Pending debits" value="$10,000.00" tone="text-amber-400" />
-        <MockStat label="Pending credits" value="$1,250.00" tone="text-sky-400" />
-        <MockStat label="Total entries" value="128" tone="text-slate-100" />
-        <MockStat label="Monthly credits" value="$18,400.00" tone="text-emerald-400" />
-      </div>
-      <div className="flex h-16 items-end gap-1" aria-hidden="true">
-        {[38, 46, 42, 60, 52, 70, 62, 82, 74, 92, 84, 100, 66].map((h, i) => (
-          <div key={i} className="flex-1 rounded-t bg-gradient-to-t from-brand-800/60 to-brand-500" style={{ height: `${h}%` }} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function MockStat({ label, value, tone }: { label: string; value: string; tone: string }) {
-  return (
-    <div className="rounded-xl bg-slate-900 px-3 py-2.5 ring-1 ring-inset ring-white/10">
-      <p className="text-[10px] font-medium uppercase tracking-wide text-slate-500">{label}</p>
-      <p className={`mt-0.5 text-sm font-bold ${tone}`}>{value}</p>
     </div>
   );
 }

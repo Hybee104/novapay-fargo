@@ -11,7 +11,8 @@ import { SkeletonCard } from "@/components/ui/Skeleton";
 import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
 import { Button } from "@/components/ui/Button";
-import { formatCurrencyWithSign, relativeTime } from "@/lib/utils";
+import { formatCurrencyWithSign, relativeTime, formatDateTime } from "@/lib/utils";
+import { DemoNotice } from "@/components/ui/DemoNotice";
 
 interface TxRow {
   id: string;
@@ -91,6 +92,8 @@ export function FargoTransactionsView() {
   return (
     <div className="space-y-6">
       <PageHeader title="Transactions" description="Every entry in your Fargo ledger." />
+
+      <DemoNotice variant="inline" />
 
       <Card>
         <CardContent className="space-y-4 p-5">

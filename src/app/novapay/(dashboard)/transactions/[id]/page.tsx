@@ -107,7 +107,7 @@ export default async function TransactionDetailPage({ params }: { params: Promis
             </>
           ) : (
             <>
-              A record stored in the NovaPAY Bank database (<span className="font-mono">dev.db</span>).{" "}
+              A stored record in this demonstration application. Not a real bank transaction.{" "}
               <span className="inline-flex items-center gap-0.5">
                 <Copy className="size-3" aria-hidden="true" /> Reference copied when requested
               </span>

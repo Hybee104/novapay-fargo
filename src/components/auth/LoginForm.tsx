@@ -2,10 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { DEMO_USER } from "@/lib/constants";
 
 export function LoginForm() {
   const router = useRouter();
@@ -49,13 +47,6 @@ export function LoginForm() {
     } finally {
       setLoading(false);
     }
-  }
-
-  function fillDemo() {
-    setEmail(DEMO_USER.email);
-    setPassword(DEMO_USER.password);
-    setErrors({});
-    setFormError(null);
   }
 
   return (
@@ -106,25 +97,6 @@ export function LoginForm() {
             {loading ? "Signing in…" : "Sign in"}
           </Button>
         </form>
-
-        <div className="mt-4 rounded-xl border border-dashed border-amber-300 bg-amber-50 p-4 dark:border-amber-500/40 dark:bg-amber-500/10">
-          <p className="flex items-center gap-1.5 text-sm font-semibold text-amber-800 dark:text-amber-300">
-            <Sparkles className="size-4" aria-hidden="true" />
-            Example sign-in
-          </p>
-          <p className="mt-1 text-xs text-amber-700 dark:text-amber-300/80">
-            Email: <span className="font-mono">{DEMO_USER.email}</span>
-            <br />
-            Password: <span className="font-mono">{DEMO_USER.password}</span>
-          </p>
-          <button
-            type="button"
-            onClick={fillDemo}
-            className="mt-2 rounded-lg border border-amber-300 bg-white px-3 py-1.5 text-xs font-semibold text-amber-800 transition-colors hover:bg-amber-100 dark:border-amber-500/50 dark:bg-slate-900 dark:text-amber-300 dark:hover:bg-slate-800"
-          >
-            Fill example credentials
-          </button>
-        </div>
       </div>
 
       <p className="mt-4 text-center text-sm text-slate-500 dark:text-slate-400">

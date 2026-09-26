@@ -17,12 +17,12 @@ const FAQS: Faq[] = [
   {
     category: "General",
     q: "Is this a real bank?",
-    a: "NovaPAY Bank is a digital banking platform. There is no real bank, account, card, or financial service behind it.",
+    a: "No. NovaPAY Bank is a fictional banking application built as a software demonstration project. There is no real bank, account, card, or financial service behind it, and the NovaPAY and Fargo brands are invented for this demo.",
   },
   {
     category: "General",
     q: "Is any real money involved?",
-    a: "Every balance, transfer, transaction and notification lives only inside the application database (dev.db). No external payment processor, bank API or real funds are ever contacted.",
+    a: "No. Balances, transfers, transactions and notifications are synthetic demo values held only inside this demonstration application. No external payment processor, bank API or real funds are ever contacted.",
   },
   {
     category: "Transfers",
@@ -47,7 +47,7 @@ const FAQS: Faq[] = [
   {
     category: "Data",
     q: "Where is my data stored?",
-    a: "Everything is stored in a local SQLite database inside this project (prisma/dev.db). Nothing is uploaded, tracked or shared anywhere.",
+    a: "This is a fictional demonstration application, so the sign-in details you enter and the generated demo records are stored by the application itself in order to run the demo. Do not enter real personal information and never reuse a real password here.",
   },
 ];
 
