@@ -33,7 +33,12 @@ const RULES: Rule[] = [
 
 const REPLIES: Record<Category, (name: string) => string> = {
   pending: (name) =>
-    `Hello ${name}. Fargo payments are created as PENDING automatically. That means the amount is reserved from your available balance but has not yet settled. Payments stay pending until the transaction-status logic advances them. You'll be notified when that happens.`,
+    `Hello ${name}. Thanks for checking in — your Fargo payment is marked as PENDING, which means it has been accepted and the amount is reserved from your available balance but has not yet settled. ` +
+    `Settlement normally completes within one to two business days, and the most common reasons it takes a little longer are: ` +
+    `the sending bank is still batching the payment, the recipient's bank is taking extra time to process it, ` +
+    `the payment is held for a routine verification or compliance review, or it is waiting in our processing queue during a busy period. ` +
+    `The reservation is released automatically once the payment completes or is returned, and there's nothing you need to send or pay to move it along. ` +
+    `You'll be notified as soon as the status changes. If it's still pending after three business days, send me the date and amount and I'll look into it further.`,
   transfer: (name) =>
     `Hi ${name}. Transfers into Fargo come from your linked NovaPAY account through an internal transfer. Both sides are recorded together in your account — the NovaPAY balance decreases and the Fargo balance increases by exactly the same amount.`,
   payment: (name) =>

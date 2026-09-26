@@ -69,7 +69,9 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Please fix the highlighted fields.", errors }, { status: 400 });
   }
 
-  const agentReply = simulateAgentReply(user.firstName, message);
+  const agentReply = simulateAgentReply(user.firstName, message, {
+    balance: user.account ? Number(user.account.balance) : null,
+  });
 
   const conversation = await prisma.supportConversation.create({
     data: {

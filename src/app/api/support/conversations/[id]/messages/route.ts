@@ -69,7 +69,9 @@ export async function POST(req: Request, context: RouteContext) {
     );
   }
 
-  const agentReply = simulateAgentReply(user.firstName, message);
+  const agentReply = simulateAgentReply(user.firstName, message, {
+    balance: user.account ? Number(user.account.balance) : null,
+  });
 
   const messages = await prisma.$transaction([
     prisma.supportMessage.create({
