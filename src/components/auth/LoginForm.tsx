@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
@@ -85,7 +84,7 @@ export function LoginForm() {
             error={errors.password}
           />
 
-          <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2">
             <label className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
               <input
                 type="checkbox"
@@ -95,12 +94,6 @@ export function LoginForm() {
               />
               Remember me
             </label>
-            <Link
-              href="/register"
-              className="text-sm font-medium text-brand-700 hover:underline dark:text-brand-300"
-            >
-              Forgot password?
-            </Link>
           </div>
 
           {formError && (
@@ -135,10 +128,7 @@ export function LoginForm() {
       </div>
 
       <p className="mt-4 text-center text-sm text-slate-500 dark:text-slate-400">
-        Don&apos;t have an account?{" "}
-        <Link href="/register" className="font-medium text-brand-700 hover:underline dark:text-brand-300">
-          Create an account
-        </Link>
+        New accounts are created by an administrator. Need help? Contact support.
       </p>
     </div>
   );

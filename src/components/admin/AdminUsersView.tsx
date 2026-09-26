@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { Search, ShieldAlert, ShieldCheck, UserCheck, UserX, Users } from "lucide-react";
+import { Search, ShieldAlert, ShieldCheck, UserCheck, UserPlus, UserX, Users } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Badge } from "@/components/ui/Badge";
@@ -54,6 +54,81 @@ export function AdminUsersView({ currentUserId }: AdminUsersViewProps) {
   const [saving, setSaving] = useState(false);
   const [actionError, setActionError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
+
+  // Create-user state.
+  const [createOpen, setCreateOpen] = useState(false);
+  const [creating, setCreating] = useState(false);
+  const [createErrors, setCreateErrors] = useState<Record<string, string>>({});
+  const [createError, setCreateError] = useState<string | null>(null);
+  const [newUser, setNewUser] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    phone: "",
+  });
+
+  function setNewUserField(name: keyof typeof newUser, value: string) {
+    setNewUser((prev) => ({ ...prev, [name]: value }));
+    setCreateErrors((prev) => {
+      const next = { ...prev };
+      delete next[name];
+      return next;
+    });
+  }
+
+  function openCreate() {
+    setNewUser({ firstName: "", lastName: "", email: "", password: "", phone: "" });
+    setCreateErrors({});
+    setCreateError(null);
+    setCreateOpen(true);
+  }
+
+  async function submitCreate(e?: React.FormEvent) {
+    e?.preventDefault();
+    setCreateErrors({});
+    setCreateError(null);
+
+    // Mirror of the server rules so obvious mistakes never reach the API.
+    const clientErrors: Record<string, string> = {};
+    if (!newUser.firstName.trim()) clientErrors.firstName = "First name is required.";
+    if (!newUser.lastName.trim()) clientErrors.lastName = "Last name is required.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newUser.email.trim())) {
+      clientErrors.email = "Enter a valid email address.";
+    }
+    if (newUser.password.length < 8) clientErrors.password = "Password must be at least 8 characters.";
+    else if (!/[A-Z]/.test(newUser.password) || !/[a-z]/.test(newUser.password) || !/\d/.test(newUser.password)) {
+      clientErrors.password = "Password must include uppercase, lowercase and a number.";
+    }
+    if (Object.keys(clientErrors).length > 0) {
+      setCreateErrors(clientErrors);
+      return;
+    }
+
+    setCreating(true);
+    try {
+      const res = await fetch("/api/admin/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newUser),
+      });
+      const json = await res.json().catch(() => null);
+      if (!res.ok || !json?.ok) {
+        setCreateError(json?.error ?? "Something went wrong. Please try again.");
+        setCreateErrors(json?.errors ?? {});
+        return;
+      }
+      setCreateOpen(false);
+      setNotice(`${json.user.firstName} ${json.user.lastName} was created and can now sign in.`);
+      // Refresh the list so the new account and updated counts appear.
+      setLoading(true);
+      load();
+    } catch {
+      setCreateError("Something went wrong. Please try again.");
+    } finally {
+      setCreating(false);
+    }
+  }
 
   const load = useCallback(() => {
     fetch("/api/admin/users", { cache: "no-store" })
@@ -219,6 +294,10 @@ export function AdminUsersView({ currentUserId }: AdminUsersViewProps) {
                     {f}
                   </button>
                 ))}
+                <Button size="sm" onClick={openCreate} className="ml-1">
+                  <UserPlus className="size-4" aria-hidden="true" />
+                  Create user
+                </Button>
               </div>
             </div>
           </div>
@@ -362,6 +441,84 @@ export function AdminUsersView({ currentUserId }: AdminUsersViewProps) {
             </p>
           )}
         </div>
+      </Modal>
+
+      {/* Create user modal — admin-only, enforced server-side as well */}
+      <Modal
+        open={createOpen}
+        onClose={() => (creating ? undefined : setCreateOpen(false))}
+        title="Create a new user"
+        description="The new account is active and can sign in immediately with the password you set."
+        footer={
+          <>
+            <Button variant="outline" onClick={() => setCreateOpen(false)} disabled={creating}>
+              Cancel
+            </Button>
+            <Button loading={creating} onClick={() => void submitCreate()}>
+              {creating ? "Creating…" : "Create user"}
+            </Button>
+          </>
+        }
+      >
+        <form onSubmit={submitCreate} className="space-y-4" noValidate>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <Input
+              label="First name"
+              autoComplete="off"
+              placeholder="Michael"
+              value={newUser.firstName}
+              onChange={(e) => setNewUserField("firstName", e.target.value)}
+              error={createErrors.firstName}
+            />
+            <Input
+              label="Last name"
+              autoComplete="off"
+              placeholder="Anderson"
+              value={newUser.lastName}
+              onChange={(e) => setNewUserField("lastName", e.target.value)}
+              error={createErrors.lastName}
+            />
+          </div>
+
+          <Input
+            label="Email"
+            type="email"
+            autoComplete="off"
+            placeholder="customer@example.com"
+            value={newUser.email}
+            onChange={(e) => setNewUserField("email", e.target.value)}
+            error={createErrors.email}
+          />
+
+          <Input
+            label="Temporary password"
+            type="password"
+            autoComplete="new-password"
+            hint="At least 8 characters with uppercase, lowercase and a number. Share it with the user securely."
+            placeholder="••••••••"
+            value={newUser.password}
+            onChange={(e) => setNewUserField("password", e.target.value)}
+            error={createErrors.password}
+          />
+
+          <Input
+            label="Phone (optional)"
+            type="tel"
+            autoComplete="off"
+            placeholder="+1 (555) 010-2030"
+            value={newUser.phone}
+            onChange={(e) => setNewUserField("phone", e.target.value)}
+            error={createErrors.phone}
+          />
+
+          {createError && (
+            <p role="alert" className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm font-medium text-red-600 dark:border-red-500/30 dark:bg-red-500/10 dark:text-red-400">
+              {createError}
+            </p>
+          )}
+
+          <button type="submit" className="hidden" aria-hidden="true" tabIndex={-1} />
+        </form>
       </Modal>
     </div>
   );

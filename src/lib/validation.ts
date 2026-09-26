@@ -25,21 +25,24 @@ function parseAmount(value: unknown): number | null {
   return null;
 }
 
-export interface RegisterInput {
+export interface CreateUserInput {
   firstName: string;
   lastName: string;
   email: string;
   password: string;
-  confirmPassword: string;
+  phone: string;
 }
 
-export function validateRegister(body: unknown): ValidationResult<RegisterInput> {
+// Field rules for the admin-only create-user endpoint: the same constraints a
+// customer registration used, minus `confirmPassword` (an admin sets the
+// customer's password once) and with an optional phone number.
+export function validateCreateUser(body: unknown): ValidationResult<CreateUserInput> {
   const b = (body ?? {}) as Record<string, unknown>;
   const firstName = cleanString(b.firstName);
   const lastName = cleanString(b.lastName);
   const email = cleanString(b.email);
   const password = cleanString(b.password);
-  const confirmPassword = cleanString(b.confirmPassword);
+  const phone = cleanString(b.phone);
   const errors: Record<string, string> = {};
 
   if (!firstName) errors.firstName = "First name is required.";
@@ -57,14 +60,13 @@ export function validateRegister(body: unknown): ValidationResult<RegisterInput>
     errors.password = "Password must include uppercase, lowercase and a number.";
   }
 
-  if (!confirmPassword) errors.confirmPassword = "Please confirm your password.";
-  else if (confirmPassword !== password) errors.confirmPassword = "Passwords do not match.";
+  if (phone && !/^[+\d][\d\s()\-.]{6,24}$/.test(phone)) errors.phone = "Enter a valid phone number.";
 
   if (Object.keys(errors).length > 0) return { ok: false, errors };
 
   return {
     ok: true,
-    value: { firstName, lastName, email: email.toLowerCase(), password, confirmPassword },
+    value: { firstName, lastName, email: email.toLowerCase(), password, phone },
     errors: {},
   };
 }

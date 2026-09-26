@@ -64,15 +64,10 @@ export default function LandingPage() {
               {BANK_TAGLINE}. Explore balances, transfers, transaction history, analytics, notifications and support — all in one place, ready to explore.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Link href="/novapay/dashboard" className="w-full sm:w-auto">
+              <Link href="/login" className="w-full sm:w-auto">
                 <Button size="lg" fullWidth>
-                  Try NovaPAY
+                  Sign in to NovaPAY
                   <ArrowRight className="size-4" aria-hidden="true" />
-                </Button>
-              </Link>
-              <Link href="/register" className="w-full sm:w-auto">
-                <Button variant="outline" size="lg" fullWidth>
-                  Create an account
                 </Button>
               </Link>
             </div>
