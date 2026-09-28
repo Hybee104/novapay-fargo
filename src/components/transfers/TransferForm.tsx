@@ -234,7 +234,7 @@ export function TransferForm() {
                   <Input
                     label="Recipient email"
                     type="email"
-                    placeholder="recipient@example.com"
+                    placeholder="recipient@email.com"
                     value={form.recipientEmail}
                     onChange={(e) => setField("recipientEmail", e.target.value)}
                     error={errors.recipientEmail}

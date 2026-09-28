@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { AccountView } from "@/components/account/AccountView";
-import { DemoNotice } from "@/components/ui/DemoNotice";
 
 export const metadata: Metadata = {
   title: "Account",
-  description: "View and edit your demo account details. Fictional project — not a real bank.",
+  description: "View and edit your profile and account details.",
 };
 
 export default function AccountPage() {
@@ -15,7 +14,6 @@ export default function AccountPage() {
         title="Account"
         description="Your profile and account details."
       />
-      <DemoNotice variant="inline" />
       <AccountView />
     </div>
   );

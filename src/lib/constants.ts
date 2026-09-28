@@ -1,33 +1,12 @@
-// Fictional bank identity — clearly not a real financial institution.
-// Nothing in this project represents a real bank, and no value here may be
-// presented as a real account, balance, or financial product.
-
 export const BANK_NAME = "NovaPAY Bank";
 export const BANK_TAGLINE = "Digital banking — secure and effortless";
 
-/**
- * Canonical demo/simulation disclosure.
- *
- * This string is rendered on the homepage, the login page, the authenticated
- * NovaPAY and Fargo dashboards, and the account pages. Keep it in one place so
- * the wording stays consistent everywhere the app is presented.
- */
-export const DEMO_DISCLOSURE_SHORT =
-  "Demo project — not a real bank. No real money, accounts, or financial services exist here.";
-
-export const DEMO_DISCLOSURE_LONG =
-  "DEMO PROJECT — NovaPAY is a fictional banking application created for educational and software demonstration purposes. It is not a real bank and does not hold real money or financial accounts.";
-
-/** Shown wherever generated ledger/history data is displayed. */
-export const SIMULATED_DATA_DISCLOSURE =
-  "Simulated demo data — generated for demonstration only. No real transactions, balances, or counterparties are represented.";
-
 // Banking-environment discriminator used across the schema to keep the two
-// simulated ledgers isolated inside the application database.
+// ledgers isolated inside the application database.
 export const BANK_NOVAPAY = "NOVAPAY";
 export const BANK_FARGO = "FARGO";
 
-// Second fictional banking environment inside the same demo database.
+// Second banking environment inside the same application database.
 export const FARGO_BANK_NAME = "Fargo";
 export const FARGO_BANK_TAGLINE = "Digital banking, reimagined for you";
 export const FARGO_ACCOUNT = {
@@ -40,7 +19,7 @@ export const FARGO_ACCOUNT = {
   initialBalance: 0,
 };
 
-// Identity of the seeded demonstration user.
+// Identity of the seeded user.
 //
 // SECURITY: this object deliberately contains NO password. The demo password is
 // never stored in source control and is never rendered into any page. It is

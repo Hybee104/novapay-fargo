@@ -125,7 +125,7 @@ export function FargoAccountView() {
                   <dd className="text-right font-bold text-slate-900 dark:text-slate-50">
                     {formatCurrency(data.account.balance)}
                     <span className="mt-0.5 block text-[10px] font-medium uppercase tracking-wide text-slate-400">
-                      Simulated demo figure
+                      Available balance
                     </span>
                   </dd>
                 </div>

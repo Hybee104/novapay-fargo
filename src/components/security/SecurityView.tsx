@@ -176,7 +176,7 @@ export function SecurityView() {
         <CardContent className="p-6">
           <h2 className="text-base font-semibold text-slate-900 dark:text-slate-100">Account Preferences</h2>
           <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-            These controls mirror the toggles a real banking app would offer.
+            These controls mirror the toggles a modern banking app would offer.
           </p>
           <div className="mt-5 space-y-5">
             {toggles.map((t) => (

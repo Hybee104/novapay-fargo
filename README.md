@@ -1,12 +1,10 @@
-# NovaPAY Bank — Demo Banking Platform
+# NovaPAY Bank
 
-A fictional, full-stack demo banking application built with **Next.js 16**, **Prisma**, **React 19**, and **Tailwind CSS v4**.
+A full-stack digital banking application built with **Next.js 16**, **Prisma**, **React 19**, and **Tailwind CSS v4**.
 
-NovaPAY runs a simulated $650,000.00 account with a full ledger of transactions, pending transfers, balance history, support chat, and login activity.
+NovaPAY runs a $650,000.00 account with a full ledger of transactions, pending transfers, balance history, support chat, and login activity.
 
-An optional companion environment — **Fargo Digital Banking** — provides a second $0.00 simulated account. Internal transfers between NovaPAY and Fargo are atomic, with paired ledger entries in both accounts.
-
-**No real money is sent, received, or stored. All data is simulated.**
+An optional companion environment — **Fargo Digital Banking** — provides a second $0.00 account. Internal transfers between NovaPAY and Fargo are atomic, with paired ledger entries in both accounts.
 
 ---
 
@@ -27,7 +25,7 @@ This automatically runs `postinstall`, which generates the Prisma client for the
 
 ### Environment Variables
 
-Copy the example env file and fill in your own values:
+Copy the env template and fill in your own values:
 
 ```bash
 cp .env.example .env
@@ -47,13 +45,13 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-### Seed the Demo Data
+### Seed the Database
 
 ```bash
 npm run db:seed
 ```
 
-This creates the demo user and all simulated accounts. Safe to run repeatedly — the seed is idempotent and will exit cleanly if data already exists.
+This creates the initial user and both accounts. Safe to run repeatedly — the seed is idempotent and will exit cleanly if data already exists.
 
 To wipe and re-seed from scratch:
 
@@ -71,7 +69,7 @@ npm run db:seed
 | `npm run start` | Serve the production build |
 | `npm run lint` | Run ESLint |
 | `npm run typecheck` | Run TypeScript type checking |
-| `npm run db:seed` | Seed the demo data (idempotent) |
+| `npm run db:seed` | Seed the database (idempotent) |
 | `npm run db:reset` | Reset the SQLite database and re-apply migrations |
 | `npm run db:generate` | Regenerate the Prisma client (SQLite) |
 | `npm run db:generate:prod` | Regenerate the Prisma client (auto-detects DATABASE_URL) |
@@ -185,7 +183,7 @@ DATABASE_URL="postgresql://..." npm run db:seed
 ### 8. Verify
 
 - Open your Vercel URL.
-- Sign in with the demo credentials (see the seed output for login details).
+- Open `/admin` and create a user with a password of your choosing, then sign in with those credentials.
 - Check both `/novapay/dashboard` and `/fargo/dashboard`.
 - Perform an internal transfer to verify both accounts update.
 
@@ -238,4 +236,4 @@ novapay/
 
 ## License
 
-This is a fictional demonstration project for educational purposes only. No real financial services are provided.
+This repository is a software project and is not a bank. It does not hold deposits, send or receive real money, or provide real financial services. No banking licence, FDIC/NCUA membership, regulatory approval, or affiliation with any real institution is claimed or implied.

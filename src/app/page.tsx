@@ -3,23 +3,18 @@ import {
   ArrowRight,
   BarChart3,
   BellRing,
-  FlaskConical,
   Headphones,
   LayoutGrid,
-  Moon,
   MoveUpRight,
-  ScanFace,
   ShieldCheck,
 } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
-import { DemoNotice } from "@/components/ui/DemoNotice";
 import { BANK_TAGLINE } from "@/lib/constants";
 
 export const metadata = {
-  title: "NovaPAY Bank — Fictional Banking Demonstration",
-  description:
-    "NovaPAY BANK is a fictional banking demonstration. No real banking services, accounts, or money are provided.",
+  title: "NovaPAY Bank",
+  description: "NovaPAY Bank — digital banking made simple.",
 };
 
 export default function LandingPage() {
@@ -53,33 +48,25 @@ export default function LandingPage() {
         <section className="relative overflow-hidden">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_70%_20%,rgba(68,113,179,0.16),transparent_60%)]" aria-hidden="true" />
           <div className="relative mx-auto max-w-6xl px-4 pb-16 pt-16 text-center sm:px-6 sm:pt-24">
-            <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-amber-300/70 bg-amber-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-amber-800 dark:border-amber-500/40 dark:bg-amber-950/40 dark:text-amber-200">
-              <FlaskConical className="size-3.5" aria-hidden="true" />
-              Fictional demo project
-            </div>
             <h1 className="mx-auto mt-6 max-w-3xl text-4xl font-black tracking-tight text-slate-900 sm:text-6xl dark:text-white">
-              A fictional banking UI,
-              <span className="text-brand-700 dark:text-brand-400"> built for demonstration.</span>
+              Digital banking,
+              <span className="text-brand-700 dark:text-brand-400"> secure and effortless.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg dark:text-slate-300">
-              {BANK_TAGLINE}. A portfolio project that exercises dashboards, transfers,
-              transaction history, analytics, notifications and support — with entirely invented
-              data.
+              {BANK_TAGLINE}. Manage dashboards, transfers, transaction history, analytics,
+              notifications and support from a single place.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link href="/login" className="w-full sm:w-auto">
                 <Button size="lg" fullWidth>
-                  Open the demo
+                  Get started
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </Button>
               </Link>
             </div>
             <p className="mt-4 text-xs text-slate-500 dark:text-slate-400">
-              No sign-up is public — an administrator creates demo accounts.
+              New accounts are created by an administrator.
             </p>
-            <div className="mx-auto mt-8 max-w-2xl text-left">
-              <DemoNotice />
-            </div>
           </div>
         </section>
 
@@ -87,7 +74,7 @@ export default function LandingPage() {
         <section id="features" className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <h2 className="text-center text-2xl font-bold text-slate-900 sm:text-3xl dark:text-white">Everything a modern banking app needs</h2>
           <p className="mx-auto mt-3 max-w-xl text-center text-sm text-slate-600 dark:text-slate-300">
-            Every feature is built end-to-end with the same patterns a real banking product would use.
+              Every feature is built end-to-end with the same patterns a modern banking product would use.
           </p>
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <FeatureCard
@@ -123,45 +110,34 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Demo contents */}
+        {/* Account overview */}
         <section id="account" className="border-y border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900/40">
           <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
             <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2">
               <div>
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-300/70 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-800 dark:border-amber-500/40 dark:bg-amber-950/40 dark:text-amber-200">
-                  <FlaskConical className="size-3.5" aria-hidden="true" />
-                  Sample data generator
-                </span>
-                <h2 className="mt-4 text-2xl font-bold text-slate-900 sm:text-3xl dark:text-white">
-                  Every account starts with generated history
+                <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl dark:text-white">
+                  Every account starts with full history
                 </h2>
                 <p className="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-                  When an administrator provisions a demo account, the app deterministically
-                  generates a multi-year ledger of invented transactions, monthly balance snapshots,
-                  pending items, notifications and a support conversation. Every figure is synthetic
-                  test data chosen to exercise the interface.
+                  When an administrator provisions an account, the app generates a multi-year
+                  ledger of transactions, monthly balance snapshots, pending items, notifications
+                  and a support conversation so the interface is immediately usable.
                 </p>
                 <ul className="mt-6 space-y-3 text-sm text-slate-700 dark:text-slate-300">
-                  <Bullet>Deterministic multi-year transaction history</Bullet>
+                  <Bullet>Multi-year transaction history</Bullet>
                   <Bullet>Pending and completed ledger states</Bullet>
                   <Bullet>Monthly balance snapshots for charting</Bullet>
-                  <Bullet>Synthetic counterparties and references</Bullet>
+                  <Bullet>Counterparties and references</Bullet>
                 </ul>
               </div>
-              <div className="space-y-4">
-                <DemoNotice
-                  bankName="Fargo"
-                  message="NovaPAY and Fargo are both invented brands created for this demo. The account numbers, routing numbers, balances and transaction records shown inside the app are fabricated sample values."
-                />
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm leading-relaxed text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
-                  <p className="font-semibold text-slate-900 dark:text-slate-100">What this is not</p>
-                  <ul className="mt-2 space-y-1.5">
-                    <li>Not a bank, lender, or licensed financial institution</li>
-                    <li>Not connected to any payment network or real account</li>
-                    <li>Not able to hold, move, or request real money</li>
-                    <li>Not an offer of any financial product or service</li>
-                  </ul>
-                </div>
+              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm leading-relaxed text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
+                <p className="font-semibold text-slate-900 dark:text-slate-100">Built for everyday use</p>
+                <ul className="mt-2 space-y-1.5">
+                  <li>Check balances and recent activity at a glance</li>
+                  <li>Send and track transfers between accounts</li>
+                  <li>Review spending and credit trends over time</li>
+                  <li>Manage security settings and notifications</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -172,20 +148,20 @@ export default function LandingPage() {
           <h2 className="text-center text-2xl font-bold text-slate-900 sm:text-3xl dark:text-white">Common questions</h2>
           <div className="mt-8 space-y-3">
             <FaqItem
-              q="Is this a real bank?"
-              a="No. NovaPAY is a fictional banking application built as a software demonstration project. There is no real bank, account, card, or financial service behind it, and the NovaPAY and Fargo brands are invented for this demo."
+              q="How do I get an account?"
+              a="Accounts are provisioned by an administrator from the admin dashboard, which keeps access to the application controlled."
             />
             <FaqItem
-              q="Can I lose or send real money?"
-              a="No. There is no real money anywhere in this project. Transfers only change a synthetic number inside this demonstration application."
+              q="What can I do after signing in?"
+              a="You can review balances and transaction history, send transfers, track pending items, read analytics, manage notifications and contact support."
             />
             <FaqItem
-              q="Are the balances and transactions real?"
-              a="No. Balances, account and routing numbers, counterparties and the full transaction history are generated sample data created to exercise the interface."
+              q="Is my account secure?"
+              a="Sign-in details are hashed with scrypt and sessions use signed cookies. The security centre also provides two-factor, biometric and alert preferences plus a login-activity log."
             />
             <FaqItem
-              q="Is my data safe / private?"
-              a="Sign-in details are hashed with scrypt and sessions use signed cookies. Never reuse a real password here — this is a demo, not a service."
+              q="How do I get help?"
+              a="Use the support assistant in the app, open a ticket, or browse the FAQ. The security centre lets you review recent sign-in activity at any time."
             />
           </div>
           <p className="mt-8 text-center text-sm text-slate-500 dark:text-slate-400">
@@ -201,7 +177,7 @@ export default function LandingPage() {
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 px-4 text-center sm:px-6">
           <Logo />
           <p className="text-xs text-slate-500 dark:text-slate-400">
-            © 2026 NovaPAY — a fictional demo project. Not a real bank.
+            © 2026 NovaPAY Bank. All rights reserved.
           </p>
         </div>
       </footer>

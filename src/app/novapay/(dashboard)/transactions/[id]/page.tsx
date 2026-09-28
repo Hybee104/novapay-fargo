@@ -107,7 +107,7 @@ export default async function TransactionDetailPage({ params }: { params: Promis
             </>
           ) : (
             <>
-              A stored record in this demonstration application. Not a real bank transaction.{" "}
+              A stored transaction record.{" "}
               <span className="inline-flex items-center gap-0.5">
                 <Copy className="size-3" aria-hidden="true" /> Reference copied when requested
               </span>

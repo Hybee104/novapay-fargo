@@ -58,7 +58,7 @@ model Account {
   currency      String   @default("USD")
   accountNumber String   @unique
   routingNumber String
-  status        String   @default("Active — Demo")
+  status        String   @default("Active")
   balance       Decimal  @default(650000)
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt

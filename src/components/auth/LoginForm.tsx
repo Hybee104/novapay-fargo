@@ -60,7 +60,7 @@ export function LoginForm() {
             label="Email"
             type="email"
             autoComplete="email"
-            placeholder="you@example.com"
+            placeholder="you@yourdomain.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             error={errors.email}

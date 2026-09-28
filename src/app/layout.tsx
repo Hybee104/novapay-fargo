@@ -4,21 +4,15 @@ import { Providers } from "@/components/providers";
 
 export const metadata: Metadata = {
   title: {
-    default: "NovaPAY Bank — Fictional Banking Demonstration",
-    template: "%s | NovaPAY Bank — Fictional Banking Demonstration",
+    default: "NovaPAY Bank",
+    template: "%s | NovaPAY Bank",
   },
-  description:
-    "NovaPAY Bank is a fictional banking demonstration. No real banking services, accounts, or money are provided.",
+  description: "NovaPAY Bank — digital banking made simple.",
   metadataBase: new URL(process.env.APP_URL ?? "http://localhost:3000"),
   openGraph: {
-    title: "NovaPAY Bank — Fictional Banking Demonstration",
-    description:
-      "NovaPAY BANK is a fictional banking demonstration. No real banking services, accounts, or money are provided.",
+    title: "NovaPAY Bank",
+    description: "NovaPAY Bank — digital banking made simple.",
     type: "website",
-  },
-  robots: {
-    index: true,
-    follow: true,
   },
 };
 

@@ -45,6 +45,29 @@ body {
   background-color: color-mix(in srgb, var(--color-brand-500) 25%, transparent);
 }
 
+/* Live chat widget — subtle, professional motion */
+@keyframes np-chat-msg {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes np-chat-pop {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

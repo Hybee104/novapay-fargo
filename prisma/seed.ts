@@ -37,10 +37,10 @@ function simCode(length: number): string {
   return out;
 }
 function txnRef(year: number): string {
-  return `SIM-TXN-${year}-${simCode(6)}`;
+  return `NVP-TXN-${year}-${simCode(6)}`;
 }
 function tktRef(): string {
-  return `SIM-TKT-${simCode(5)}`;
+  return `NVP-TKT-${simCode(5)}`;
 }
 function fargoTktRef(): string {
   return `FARG-TKT-${simCode(5)}`;
@@ -139,7 +139,6 @@ for (let i = 1; i <= CURVE_PERIOD; i += 1) {
     amount: -900,
     recipientName: "Savings Pot",
     recipientReference: "SAV-INTERNAL-01",
-    recipientEmail: "savings@example.com",
     description: "Transfer to Savings Pot",
     category: "Savings",
     date: dayInMonth(year, month, 2, 12),
@@ -381,7 +380,6 @@ const pendingCredits = [
   amount: c.amt,
   recipientName: c.name,
   recipientReference: c.ref,
-  recipientEmail: "incoming@example.com",
   description: `${c.desc} — awaiting confirmation`,
   category: "Incoming",
   status: "PENDING" as const,
@@ -390,14 +388,13 @@ const pendingCredits = [
 }));
 
 const pendingDebits = [
-  { name: "Elena Rodriguez", ref: "SIM-ACC-009841", amt: 2500, desc: "Family transfer" },
-  { name: "Green Earth Foundation", ref: "SIM-ACC-005512", amt: 150, desc: "Monthly donation" },
+  { name: "Elena Rodriguez", ref: "ACC-009841", amt: 2500, desc: "Family transfer" },
+  { name: "Green Earth Foundation", ref: "ACC-005512", amt: 150, desc: "Monthly donation" },
 ].map((c, idx) => ({
   type: "Transfer",
   amount: -c.amt,
   recipientName: c.name,
   recipientReference: c.ref,
-  recipientEmail: "outgoing@example.com",
   description: `${c.desc} — awaiting approval`,
   category: "Transfer",
   status: "PENDING" as const,

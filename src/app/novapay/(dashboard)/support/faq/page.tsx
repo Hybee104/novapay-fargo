@@ -16,13 +16,8 @@ interface Faq {
 const FAQS: Faq[] = [
   {
     category: "General",
-    q: "Is this a real bank?",
-    a: "No. NovaPAY Bank is a fictional banking application built as a software demonstration project. There is no real bank, account, card, or financial service behind it, and the NovaPAY and Fargo brands are invented for this demo.",
-  },
-  {
-    category: "General",
-    q: "Is any real money involved?",
-    a: "No. Balances, transfers, transactions and notifications are synthetic demo values held only inside this demonstration application. No external payment processor, bank API or real funds are ever contacted.",
+    q: "How do I get an account?",
+    a: "Accounts are provisioned by an administrator from the admin dashboard, which keeps access to the application controlled.",
   },
   {
     category: "Transfers",
@@ -32,22 +27,22 @@ const FAQS: Faq[] = [
   {
     category: "Accounts",
     q: "What are the account and routing numbers?",
-    a: "They are masked placeholders (7842-XXXX and 084000026) used to keep the interface realistic and are not valid with any real institution.",
+    a: "Your account and routing numbers are shown on the Account page, and are masked in list views to keep them readable.",
   },
   {
     category: "Security",
     q: "How secure is my account?",
-    a: "Passwords are hashed with scrypt and sessions use signed cookies. The 2FA, biometric and alert toggles mirror the controls of a real banking app.",
+    a: "Passwords are hashed with scrypt and sessions use signed cookies. The 2FA, biometric and alert toggles mirror the controls of a modern banking app.",
   },
   {
     category: "Support",
     q: "Is the chat agent real?",
-    a: "No. 'Sarah — Northstar Support' is an automated, keyword-driven reply engine. It never connects to any real customer-service system.",
+    a: "'Sarah — Northstar Support' is an automated, keyword-driven reply engine available inside the app.",
   },
   {
     category: "Data",
     q: "Where is my data stored?",
-    a: "This is a fictional demonstration application, so the sign-in details you enter and the generated demo records are stored by the application itself in order to run the demo. Do not enter real personal information and never reuse a real password here.",
+    a: "Sign-in details and account records are stored by the application itself. Your password is hashed with scrypt and is never stored in plain text.",
   },
 ];
 

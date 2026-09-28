@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { FargoSidebar } from "@/components/fargo/FargoSidebar";
 import { FargoTopbar } from "@/components/fargo/FargoTopbar";
+import { LiveChatWidget } from "@/components/support/LiveChatWidget";
 
 interface FargoShellProps {
   children: React.ReactNode;
@@ -51,6 +52,8 @@ export function FargoShell({ children, userName, userEmail }: FargoShellProps) {
           </div>
         </footer>
       </div>
+
+      <LiveChatWidget variant="fargo" firstName={userName?.split(" ")[0]} />
     </div>
   );
 }

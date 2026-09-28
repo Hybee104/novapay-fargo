@@ -484,7 +484,7 @@ export function AdminUsersView({ currentUserId }: AdminUsersViewProps) {
             label="Email"
             type="email"
             autoComplete="off"
-            placeholder="customer@example.com"
+            placeholder="name@company.com"
             value={newUser.email}
             onChange={(e) => setNewUserField("email", e.target.value)}
             error={createErrors.email}

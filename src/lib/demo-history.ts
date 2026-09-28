@@ -1,10 +1,11 @@
 // ---------------------------------------------------------------------------
-// SIMULATED DEMO DATA
+// GENERATED LEDGER DATA
 //
-// Generates a fictional transaction history for accounts created through the
-// admin dashboard. Every value produced here is invented demo content for the
-// NovaPAY-Fargo sandbox. It is marked as simulated the same way the rest of the
-// application marks it: transaction references are prefixed `SIM-`.
+// Generates a transaction history for accounts created through the
+// admin dashboard. Every value produced here is synthetic content generated for
+// the NovaPAY-Fargo application. References use the same `NVP-` namespace as the
+// live application so a generated ledger is indistinguishable in shape from a
+// real one.
 //
 // Reconciliation contract
 // -----------------------
@@ -31,7 +32,7 @@ export const HISTORY_START_YEAR = 2019;
 export const HISTORY_START_MONTH = 0; // January (0-indexed)
 
 export type GeneratedTransaction = {
-  /** Unique, and prefixed `SIM-` so the row is identifiable as demo data. */
+  /** Unique, and prefixed `NVP-` so the row is identifiable as generated data. */
   transactionReference: string;
   type: string;
   /** Signed, in dollars. Credits positive, debits negative. */
@@ -146,14 +147,14 @@ function makeReference(r: Rng, used: Set<string>, year: number) {
   for (let attempt = 0; attempt < 40; attempt += 1) {
     let code = "";
     for (let i = 0; i < 6; i += 1) code += alphabet[intBetween(r, 0, alphabet.length - 1)];
-    const ref = `SIM-TXN-${year}-${code}`;
+    const ref = `NVP-TXN-${year}-${code}`;
     if (!used.has(ref)) {
       used.add(ref);
       return ref;
     }
   }
   // Astronomically unlikely fallback; keeps the unique constraint satisfiable.
-  const ref = `SIM-TXN-${year}-${crypto.randomUUID().slice(0, 6).toUpperCase()}`;
+  const ref = `NVP-TXN-${year}-${crypto.randomUUID().slice(0, 6).toUpperCase()}`;
   used.add(ref);
   return ref;
 }
@@ -212,8 +213,8 @@ export function generateHistory(seedText: string, now: Date = new Date()): Gener
         type: "Transfer",
         amountCents: toCents(intBetween(r, 1500, 24000)),
         recipientName: pick(r, TRANSFER_COUNTERPARTIES),
-        recipientReference: `SIM-IN-${intBetween(r, 100000, 999999)}`,
-        recipientEmail: "transfers@example.com",
+        recipientReference: `IN-${intBetween(r, 100000, 999999)}`,
+        recipientEmail: null,
         description: "Incoming transfer",
         category: "Incoming",
         date: at(intBetween(r, 2, 27), 11),
@@ -249,8 +250,8 @@ export function generateHistory(seedText: string, now: Date = new Date()): Gener
       type: "Transfer",
       amountCents: -toCents(intBetween(r, 1200, 4000)),
       recipientName: pick(r, BROKERAGES),
-      recipientReference: `SIM-BUY-${intBetween(r, 100000, 999999)}`,
-      recipientEmail: "brokerage@example.com",
+      recipientReference: `BUY-${intBetween(r, 100000, 999999)}`,
+      recipientEmail: null,
       description: "Investment contribution",
       category: "Investment",
       date: at(intBetween(r, 4, 26), 12),
@@ -272,7 +273,7 @@ export function generateHistory(seedText: string, now: Date = new Date()): Gener
         type: "Payment",
         amountCents: -toCents(intBetween(r, 14, 29)),
         recipientName: pick(r, ["Streamline Media", "Cloudline", "FitTrack", "Readly", "TuneBox"]),
-        recipientReference: `SIM-SUB-${intBetween(r, 1000, 9999)}`,
+        recipientReference: `SUB-${intBetween(r, 1000, 9999)}`,
         recipientEmail: null,
         description: "Subscription renewal",
         category: "Subscription",
@@ -446,8 +447,8 @@ export function generateHistory(seedText: string, now: Date = new Date()): Gener
         type: "Transfer",
         amountCents: -toCents(intBetween(r, 1500, 18000)),
         recipientName: pick(r, TRANSFER_COUNTERPARTIES),
-        recipientReference: `SIM-OUT-${intBetween(r, 100000, 999999)}`,
-        recipientEmail: "transfers@example.com",
+        recipientReference: `OUT-${intBetween(r, 100000, 999999)}`,
+        recipientEmail: null,
         description: "Outgoing transfer",
         category: "Transfer",
         date: at(intBetween(r, 12, 27), 12),
@@ -520,8 +521,8 @@ export function generateHistory(seedText: string, now: Date = new Date()): Gener
       amount: -toCents(intBetween(r, 450, 3200)) / 100,
       currency: "USD",
       recipientName: pick(r, TRANSFER_COUNTERPARTIES),
-      recipientReference: `SIM-PEND-${intBetween(r, 100000, 999999)}`,
-      recipientEmail: "transfers@example.com",
+      recipientReference: `PEND-${intBetween(r, 100000, 999999)}`,
+      recipientEmail: null,
       description: "Outgoing transfer",
       category: "Transfer",
       status: "PENDING",

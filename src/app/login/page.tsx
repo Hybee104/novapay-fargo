@@ -4,13 +4,11 @@ import Link from "next/link";
 import { getCurrentUser } from "@/lib/auth";
 import { Logo } from "@/components/ui/Logo";
 import { LoginForm } from "@/components/auth/LoginForm";
-import { DemoNotice } from "@/components/ui/DemoNotice";
 import { BANK_TAGLINE } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Sign in — NovaPAY Bank (Demo)",
-  description:
-    "Sign in to the NovaPAY demo application. Fictional project — not a real bank, and no working credentials are published on this page.",
+  title: "Sign in",
+  description: "Sign in to your NovaPAY Bank account.",
 };
 
 export default async function LoginPage() {
@@ -25,14 +23,11 @@ export default async function LoginPage() {
       <p className="mt-3 text-center text-sm text-slate-500 dark:text-slate-400">
         {BANK_TAGLINE}
       </p>
-      <div className="mt-6 w-full max-w-md">
-        <DemoNotice />
-      </div>
       <div className="mt-8 w-full max-w-md">
         <LoginForm />
       </div>
       <p className="mt-10 text-center text-xs text-slate-400 dark:text-slate-500">
-        © 2026 NovaPAY — a fictional demo project. Not a real bank.
+        © 2026 NovaPAY Bank. All rights reserved.
       </p>
     </main>
   );

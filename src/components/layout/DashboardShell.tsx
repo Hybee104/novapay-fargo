@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { Topbar } from "@/components/layout/Topbar";
+import { LiveChatWidget } from "@/components/support/LiveChatWidget";
 
 interface DashboardShellProps {
   children: React.ReactNode;
@@ -51,6 +52,8 @@ export function DashboardShell({ children, userName, userEmail }: DashboardShell
           </div>
         </footer>
       </div>
+
+      <LiveChatWidget variant="novapay" firstName={userName?.split(" ")[0]} />
     </div>
   );
 }
